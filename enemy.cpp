@@ -47,28 +47,19 @@ void Enemy::move()
 
 	if (collisionWithCircle(m_pos, 1, m_destinationWayPoint->pos(), 1))
 	{
-		// 敌人抵达了一个航点
-		if (m_destinationWayPoint->nextWayPoint())
+        if (m_destinationWayPoint->nextWayPoint())
 		{
-			// 还有下一个航点
-			m_pos = m_destinationWayPoint->pos();
+            m_pos = m_destinationWayPoint->pos();
 			m_destinationWayPoint = m_destinationWayPoint->nextWayPoint();
 		}
 		else
 		{
-			// 表示进入基地
-			m_game->getHpDamage();
+            m_game->getHpDamage();
 			m_game->removedEnemy(this);
 			return;
 		}
 	}
-
-	// 还在前往航点的路上
-	// 目标航点的坐标
-	QPoint targetPoint = m_destinationWayPoint->pos();
-	// 未来修改这个可以添加移动状态,加快,减慢,m_walkingSpeed是基准值
-
-	// 向量标准化
+     QPoint targetPoint = m_destinationWayPoint->pos();
 	qreal movementSpeed = m_walkingSpeed;
 	QVector2D normalized(targetPoint - m_pos);
 	normalized.normalize();
@@ -84,13 +75,11 @@ void Enemy::draw(QPainter *painter) const
     painter->save();
 	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
     painter->translate(m_pos);
-    painter->drawPixmap(offsetPoint.x(),offsetPoint.y(),80,80, m_sprite);
 
-    //
-    //QPoint temp(m_pos.x()-25,m_pos.y()-12);
+    painter->drawPixmap(offsetPoint.x(),offsetPoint.y(),80,80, m_sprite);//enemy
     painter->setBrush(QColor("#99ffffff"));
     painter->setPen(Qt::NoPen);
-    painter->drawRect(offsetPoint.x(),offsetPoint.y(),60,20);
+    painter->drawRect(offsetPoint.x(),offsetPoint.y(),60,20);//text background
     painter->setPen(QPen(Qt::black));
     painter->drawText(QRect(offsetPoint.x(),offsetPoint.y(),60,20),QString("hp:%1").arg(m_currentHp));
     //
@@ -104,20 +93,20 @@ void Enemy::getRemoved()
 		return;
 
 	foreach (Tower *attacker, m_attackedTowersList)
-		attacker->targetKilled();
+        attacker->killcurrentE();
 	// 通知game,此敌人已经阵亡
 	m_game->removedEnemy(this);
 }
 
 void Enemy::getDamage(int damage)
 {
-	m_game->audioPlayer()->playSound(LaserShootSound);
+    //m_game->audioPlayer()->playSound(LaserShootSound);
 	m_currentHp -= damage;
 
 	// 阵亡,需要移除
 	if (m_currentHp <= 0)
 	{
-		m_game->audioPlayer()->playSound(EnemyDestorySound);
+        //m_game->audioPlayer()->playSound(EnemyDestorySound);
 		m_game->awardGold(200);
 		getRemoved();
 	}

@@ -106,11 +106,11 @@ void MainWindow::paintEvent(QPaintEvent *)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-	QPoint pressPos = event->pos();
+    QPoint pressPoint = event->pos();
 	auto it = m_towerPositionsList.begin();
 	while (it != m_towerPositionsList.end())
 	{
-		if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
+        if (canBuyTower() && it->containPoint(pressPoint) && !it->hasTower())
 		{
 			m_audioPlayer->playSound(TowerPlaceSound);
 			m_playrGold -= TowerCost;
@@ -253,7 +253,7 @@ void MainWindow::updateMap()
 	foreach (Enemy *enemy, m_enemyList)
 		enemy->move();
 	foreach (Tower *tower, m_towersList)
-		tower->checkEnemyInRange();
+        tower->checkE();
 	update();
 }
 

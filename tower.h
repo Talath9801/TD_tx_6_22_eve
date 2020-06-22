@@ -19,31 +19,30 @@ public:
 	~Tower();
 
 	void draw(QPainter *painter) const;
-	void checkEnemyInRange();
-	void targetKilled();
-	void attackEnemy();
-	void chooseEnemyForAttack(Enemy *enemy);
-	void removeBullet();
-	void damageEnemy();
-	void lostSightOfEnemy();
+    void checkE();
+    void killcurrentE();
+    void attackE();
+    void findEnemytoAttack(Enemy *enemy);
+    void getRidofB();
+    void damageE();
+    void cantSeeE();
 
 private slots:
-	void shootWeapon();
+    void shot();
 
 private:
-	bool			m_attacking;
-	int				m_attackRange;	// 代表塔可以攻击到敌人的距离
-	int				m_damage;		// 代表攻击敌人时造成的伤害
-	int				m_fireRate;		// 代表再次攻击敌人的时间间隔
+    bool if_on_fire;
+    int	 range_of_fire;
+    int	 per_damage;
+    int	 rate_of_attacking;
 
-	Enemy *			m_chooseEnemy;
-	MainWindow *	m_game;
-	QTimer *		m_fireRateTimer;
+    Enemy *			the_enemy;
+    MainWindow *	mainw;
+    QTimer *		tower_timer;
+    const QPoint	tower_position;
+    const QPixmap	tower_picture;
 
-	const QPoint	m_pos;
-	const QPixmap	m_sprite;
-
-	static const QSize ms_fixedSize;
+    static const QSize sizeofTower;
 };
 
 #endif // TOWER_H

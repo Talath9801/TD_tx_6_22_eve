@@ -9,50 +9,44 @@
 #include <QVector2D>
 #include <QtMath>
 
-const QSize Tower::ms_fixedSize(42, 42);
+const QSize Tower::sizeofTower(42, 42);
 
 Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/)
-	: m_attacking(false)
-    , m_attackRange(110)
-	, m_damage(10)
-	, m_fireRate(1000)
-    , m_chooseEnemy(NULL)
-	, m_game(game)
-	, m_pos(pos)
-	, m_sprite(sprite)
+    : if_on_fire(false)
+    , range_of_fire(110)
+    , per_damage(10)
+    , rate_of_attacking(1000)
+    , the_enemy(NULL)
+    , mainw(game)
+    , tower_position(pos)
+    , tower_picture(sprite)
 {
-	m_fireRateTimer = new QTimer(this);
-	connect(m_fireRateTimer, SIGNAL(timeout()), this, SLOT(shootWeapon()));
+    tower_timer = new QTimer(this);
+    connect(tower_timer, SIGNAL(timeout()), this, SLOT(shot()));
 }
 
 Tower::~Tower()
 {
-	delete m_fireRateTimer;
-	m_fireRateTimer = NULL;
+    delete tower_timer;
+    tower_timer= NULL;
 }
 
-void Tower::checkEnemyInRange()
+void Tower::checkE()//看范围内的敌人
 {
-	if (m_chooseEnemy)
+    if (the_enemy)//当前敌人
 	{
-		// 这种情况下,需要旋转炮台对准敌人
-		// 向量标准化
-		QVector2D normalized(m_chooseEnemy->pos() - m_pos);
-		normalized.normalize();
-
-		// 如果敌人脱离攻击范围
-		if (!collisionWithCircle(m_pos, m_attackRange, m_chooseEnemy->pos(), 1))
-			lostSightOfEnemy();
+        if (!collisionWithCircle(tower_position, range_of_fire, the_enemy->pos(), 1))//塔与敌人的距离超过范围
+            cantSeeE();//看不见敌人
 	}
 	else
 	{
 		// 遍历敌人,看是否有敌人在攻击范围内
-		QList<Enemy *> enemyList = m_game->enemyList();
+        QList<Enemy *> enemyList = mainw->enemyList();
 		foreach (Enemy *enemy, enemyList)
 		{
-			if (collisionWithCircle(m_pos, m_attackRange, enemy->pos(), 1))
+            if (collisionWithCircle(tower_position, range_of_fire, enemy->pos(), 1))
 			{
-				chooseEnemyForAttack(enemy);
+                findEnemytoAttack(enemy);
 				break;
 			}
 		}
@@ -62,51 +56,46 @@ void Tower::checkEnemyInRange()
 void Tower::draw(QPainter *painter) const
 {
 	painter->save();
-	painter->setPen(Qt::white);
-	// 绘制攻击范围
-	painter->drawEllipse(m_pos, m_attackRange, m_attackRange);
+    painter->setPen(Qt::yellow);
+    painter->drawEllipse(tower_position, range_of_fire, range_of_fire);
+    painter->drawPixmap(tower_position.x()-sizeofTower.width()/2,tower_position.y()-sizeofTower.height()/2,50,50, tower_picture);
+    painter->restore();
 
-	// 绘制偏转坐标,由中心+偏移=左上
-	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
-	// 绘制炮塔并选择炮塔
-	painter->translate(m_pos);
-    painter->drawPixmap(offsetPoint, m_sprite);
-	painter->restore();
 }
 
-void Tower::attackEnemy()
+void Tower::attackE()
 {
-	m_fireRateTimer->start(m_fireRate);
+    tower_timer->start(rate_of_attacking);
 }
 
-void Tower::chooseEnemyForAttack(Enemy *enemy)
+void Tower::findEnemytoAttack(Enemy *e)
 {
-	m_chooseEnemy = enemy;
-	attackEnemy();
-	m_chooseEnemy->getAttacked(this);
+    the_enemy = e;
+    attackE();
+    the_enemy->getAttacked(this);
 }
 
-void Tower::shootWeapon()
+void Tower::shot()
 {
-	Bullet *bullet = new Bullet(m_pos, m_chooseEnemy->pos(), m_damage, m_chooseEnemy, m_game);
+    Bullet *bullet = new Bullet(tower_position, the_enemy->pos(), per_damage, the_enemy, mainw);
 	bullet->move();
-	m_game->addBullet(bullet);
+    mainw->addBullet(bullet);
 }
 
-void Tower::targetKilled()
+void Tower::killcurrentE()
 {
-	if (m_chooseEnemy)
-		m_chooseEnemy = NULL;
+    if (the_enemy)
+        the_enemy = NULL;
 
-	m_fireRateTimer->stop();
+    tower_timer->stop();
 
 }
 
-void Tower::lostSightOfEnemy()
+void Tower::cantSeeE()
 {
-	m_chooseEnemy->gotLostSight(this);
-	if (m_chooseEnemy)
-		m_chooseEnemy = NULL;
+    the_enemy->gotLostSight(this);
+    if (the_enemy)
+        the_enemy = NULL;
 
-	m_fireRateTimer->stop();
+    tower_timer->stop();
 }
