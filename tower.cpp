@@ -13,11 +13,10 @@ const QSize Tower::ms_fixedSize(42, 42);
 
 Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/)
 	: m_attacking(false)
-	, m_attackRange(70)
+    , m_attackRange(110)
 	, m_damage(10)
 	, m_fireRate(1000)
-	, m_rotationSprite(0.0)
-	, m_chooseEnemy(NULL)
+    , m_chooseEnemy(NULL)
 	, m_game(game)
 	, m_pos(pos)
 	, m_sprite(sprite)
@@ -40,7 +39,6 @@ void Tower::checkEnemyInRange()
 		// 向量标准化
 		QVector2D normalized(m_chooseEnemy->pos() - m_pos);
 		normalized.normalize();
-		m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) - 90;
 
 		// 如果敌人脱离攻击范围
 		if (!collisionWithCircle(m_pos, m_attackRange, m_chooseEnemy->pos(), 1))
@@ -72,8 +70,7 @@ void Tower::draw(QPainter *painter) const
 	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
 	// 绘制炮塔并选择炮塔
 	painter->translate(m_pos);
-	painter->rotate(m_rotationSprite);
-	painter->drawPixmap(offsetPoint, m_sprite);
+    painter->drawPixmap(offsetPoint, m_sprite);
 	painter->restore();
 }
 
@@ -102,7 +99,7 @@ void Tower::targetKilled()
 		m_chooseEnemy = NULL;
 
 	m_fireRateTimer->stop();
-	m_rotationSprite = 0.0;
+
 }
 
 void Tower::lostSightOfEnemy()
@@ -112,5 +109,4 @@ void Tower::lostSightOfEnemy()
 		m_chooseEnemy = NULL;
 
 	m_fireRateTimer->stop();
-	m_rotationSprite = 0.0;
 }

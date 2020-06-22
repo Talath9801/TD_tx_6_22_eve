@@ -34,9 +34,7 @@ private:
 	int				m_maxHp;
 	int				m_currentHp;
 	qreal			m_walkingSpeed;
-	qreal			m_rotationSprite;
-
-	QPoint			m_pos;
+    QPoint			m_pos;
 	WayPoint *		m_destinationWayPoint;
 	MainWindow *	m_game;
 	QList<Tower *>	m_attackedTowersList;

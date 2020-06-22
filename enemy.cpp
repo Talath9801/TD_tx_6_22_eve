@@ -13,15 +13,14 @@
 
 static const int Health_Bar_Width = 20;
 
-const QSize Enemy::ms_fixedSize(52, 52);
+const QSize Enemy::ms_fixedSize(80,80);
 
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
 	, m_active(false)
 	, m_maxHp(40)
 	, m_currentHp(40)
-	, m_walkingSpeed(1.0)
-	, m_rotationSprite(0.0)
+    , m_walkingSpeed(1.0)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
 	, m_game(game)
@@ -75,9 +74,6 @@ void Enemy::move()
 	normalized.normalize();
 	m_pos = m_pos + normalized.toPoint() * movementSpeed;
 
-	// 确定敌人选择方向
-	// 默认图片向左,需要修正180度转右
-	m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
 }
 
 void Enemy::draw(QPainter *painter) const
@@ -85,25 +81,19 @@ void Enemy::draw(QPainter *painter) const
 	if (!m_active)
 		return;
 
-	painter->save();
-
-	QPoint healthBarPoint = m_pos + QPoint(-Health_Bar_Width / 2 - 5, -ms_fixedSize.height() / 3);
-	// 绘制血条
-	painter->setPen(Qt::NoPen);
-	painter->setBrush(Qt::red);
-	QRect healthBarBackRect(healthBarPoint, QSize(Health_Bar_Width, 2));
-	painter->drawRect(healthBarBackRect);
-
-	painter->setBrush(Qt::green);
-	QRect healthBarRect(healthBarPoint, QSize((double)m_currentHp / m_maxHp * Health_Bar_Width, 2));
-	painter->drawRect(healthBarRect);
-
-	// 绘制偏转坐标,由中心+偏移=左上
+    painter->save();
 	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
-	painter->translate(m_pos);
-	painter->rotate(m_rotationSprite);
-	// 绘制敌人
-	painter->drawPixmap(offsetPoint, m_sprite);
+    painter->translate(m_pos);
+    painter->drawPixmap(offsetPoint.x(),offsetPoint.y(),80,80, m_sprite);
+
+    //
+    //QPoint temp(m_pos.x()-25,m_pos.y()-12);
+    painter->setBrush(QColor("#99ffffff"));
+    painter->setPen(Qt::NoPen);
+    painter->drawRect(offsetPoint.x(),offsetPoint.y(),60,20);
+    painter->setPen(QPen(Qt::black));
+    painter->drawText(QRect(offsetPoint.x(),offsetPoint.y(),60,20),QString("hp:%1").arg(m_currentHp));
+    //
 
 	painter->restore();
 }

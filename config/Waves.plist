@@ -13,31 +13,31 @@
 			<key>data</key>
 			<string></string>
 			<key>spawnTime</key>
-			<integer>500</integer>
+                        <integer>3000</integer>
 		</dict>
 		<dict>
 			<key>data</key>
 			<string></string>
 			<key>spawnTime</key>
-			<integer>600</integer>
+                        <integer>6000</integer>
 		</dict>
 		<dict>
 			<key>data</key>
 			<string></string>
 			<key>spawnTime</key>
-			<integer>1000</integer>
+                        <integer>9000</integer>
 		</dict>
 		<dict>
 			<key>data</key>
 			<string></string>
 			<key>spawnTime</key>
-			<integer>3000</integer>
+                        <integer>12000</integer>
 		</dict>
 		<dict>
 			<key>data</key>
 			<string></string>
 			<key>spawnTime</key>
-			<integer>6000</integer>
+                        <integer>15000</integer>
 		</dict>
 	</array>
 	<array>
