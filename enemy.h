@@ -29,9 +29,9 @@ public:
 public slots:
 	void doActivate();
 
-private:
+protected:
 	bool			m_active;
-	int				m_maxHp;
+    int				m_maxHp;
 	int				m_currentHp;
 	qreal			m_walkingSpeed;
     QPoint			m_pos;

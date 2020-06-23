@@ -11,5 +11,8 @@
         <file>config/Info.plist</file>
         <file>config/TowersPosition.plist</file>
         <file>config/Waves.plist</file>
+        <file>image/enemyplus.png</file>
+        <file>image/hiv.png</file>
+        <file>image/bkiller.png</file>
     </qresource>
 </RCC>
