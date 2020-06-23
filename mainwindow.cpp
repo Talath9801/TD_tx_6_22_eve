@@ -15,7 +15,7 @@
 #include <QtDebug>
 
 
-static const int TowerCost = 300;
+static const int maxTowerCost = 500;
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -106,14 +106,21 @@ void MainWindow::paintEvent(QPaintEvent *)
 	painter.drawPixmap(0, 0, cachePix);
 
     painter.setBrush(QColor("#deb887"));
-    painter.drawRect(970,10,250,80);
-    //painter.drawRect(970,100,250,80);
+    painter.drawRect(rec1);//第一栏
+    painter.drawRect(rec2);//第二栏
     //painter.drawRect(970,190,250,80);
     //painter.drawRect(970,280,250,80);
     //if(remember_tower_kind==1)painter.drawRect(970,280,250,80);
 
-    QPixmap m_cell(":/image/tlymcell.png");
+    QPixmap m_cell(":/image/tlymcell.png");//画侧栏第一个，TLymCell
     painter.drawPixmap(970,10,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1050,10,170,80),QString("攻击范围110，攻击频率400ms，每次对敌人造成的伤害8，花费300"));
+
+    m_cell.load(":/image/blymcell.png");
+    painter.drawPixmap(970,100,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1050,100,170,80),QString("攻击范围110，攻击频率400ms，减慢敌人速度"));
 
 }
 
@@ -126,11 +133,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         if (canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==0)
 		{
 			m_audioPlayer->playSound(TowerPlaceSound);
-			m_playrGold -= TowerCost;
+            //m_playrGold -= TowerCost;
 
 			Tower *tower = new Tower(it->centerPos(), this);
             it->setHasTower(tower);
 			m_towersList.push_back(tower);
+            m_playrGold-=tower->get_tower_cost();
 			update();
 			break;
 		}
@@ -143,10 +151,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         //建塔，TLymCell类，记忆数值为1
         else if(canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==1)
         {
-             m_playrGold-=TowerCost;
+             //m_playrGold-=TowerCost;
              Tower *tower=new TLymCell(it->centerPos(),this);
              it->setHasTower(tower);
              m_towersList.push_back(tower);
+             m_playrGold-=tower->get_tower_cost();
              update();
              remember_tower_kind=0;
              break;
@@ -172,7 +181,7 @@ bool MainWindow::point_in_rect(QRect &rec, QPoint &p)
 
 bool MainWindow::canBuyTower() const
 {
-	if (m_playrGold >= TowerCost)
+    if (m_playrGold >= maxTowerCost)
 		return true;
 	return false;
 }

@@ -27,6 +27,13 @@ public:
     void damageE();
     void cantSeeE();
 
+    void set_range_of_fire(int x){range_of_fire=x;}
+    void set_per_damage(int x){per_damage=x;}
+    void set_rate_of_attacking(int x){rate_of_attacking=x;}
+    void set_tower_cost(int x){tower_cost=x;}
+
+    int  get_tower_cost(){return tower_cost;}
+
 public slots:
     void removeTower();//拆塔
 
@@ -39,6 +46,7 @@ protected:
     int	 per_damage;
     int	 rate_of_attacking;
     int  life_span;
+    int  tower_cost;
 
     Enemy *			the_enemy;
     MainWindow *	mainw;

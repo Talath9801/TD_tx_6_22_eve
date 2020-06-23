@@ -13,13 +13,14 @@ const QSize Tower::sizeofTower(80, 80);
 
 Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/)
     : if_on_fire(false)
-    , range_of_fire(110)
-    , per_damage(10)
-    , rate_of_attacking(500)
+    , range_of_fire(130)
+    , per_damage(6)
+    , rate_of_attacking(1000)
     , the_enemy(NULL)
     , mainw(game)
     , tower_position(pos)
     , tower_picture(sprite)
+    , tower_cost(300)
     ,life_span(5000)//生命长度为5秒
 {
     tower_timer = new QTimer(this);

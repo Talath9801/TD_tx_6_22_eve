@@ -60,6 +60,7 @@ private:
 	void doGameOver();
 	void preLoadWavesInfo();
     QRect rec1=QRect(970,10,250,80);
+    QRect rec2=QRect(970,100,250,80);
 
 private:
 	Ui::MainWindow *		ui;
