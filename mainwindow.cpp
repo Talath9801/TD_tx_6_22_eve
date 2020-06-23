@@ -5,6 +5,7 @@
 #include "bullet.h"
 #include "audioplayer.h"
 #include "plistreader.h"
+#include "tlymcell.h"
 #include <QPainter>
 #include <QMouseEvent>
 #include <QtGlobal>
@@ -12,6 +13,7 @@
 #include <QTimer>
 #include <QXmlStreamReader>
 #include <QtDebug>
+
 
 static const int TowerCost = 300;
 
@@ -102,6 +104,17 @@ void MainWindow::paintEvent(QPaintEvent *)
 
 	QPainter painter(this);
 	painter.drawPixmap(0, 0, cachePix);
+
+    painter.setBrush(QColor("#deb887"));
+    painter.drawRect(970,10,250,80);
+    //painter.drawRect(970,100,250,80);
+    //painter.drawRect(970,190,250,80);
+    //painter.drawRect(970,280,250,80);
+    //if(remember_tower_kind==1)painter.drawRect(970,280,250,80);
+
+    QPixmap m_cell(":/image/tlymcell.png");
+    painter.drawPixmap(970,10,80,80,m_cell);
+
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -110,11 +123,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 	auto it = m_towerPositionsList.begin();
 	while (it != m_towerPositionsList.end())
 	{
-        if (canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton)
+        if (canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==0)
 		{
 			m_audioPlayer->playSound(TowerPlaceSound);
 			m_playrGold -= TowerCost;
-            //it->setHasTower();
 
 			Tower *tower = new Tower(it->centerPos(), this);
             it->setHasTower(tower);
@@ -128,10 +140,34 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             it->the_tower_in=NULL;
             it->setNotHasTower();
         }
+        //建塔，TLymCell类，记忆数值为1
+        else if(canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==1)
+        {
+             m_playrGold-=TowerCost;
+             Tower *tower=new TLymCell(it->centerPos(),this);
+             it->setHasTower(tower);
+             m_towersList.push_back(tower);
+             update();
+             remember_tower_kind=0;
+             break;
+        }
 
 		++it;
 
 	}
+
+    //点击侧栏，选择tower种类
+    if(point_in_rect(rec1,pressPoint))
+    {
+        remember_tower_kind=1;   //数值改变已成功
+    }
+
+}
+bool MainWindow::point_in_rect(QRect &rec, QPoint &p)
+{
+    bool xin=(p.x()>=rec.x()&&p.x()<=rec.x()+rec.width());
+    bool yin=(p.y()>=rec.y()&&p.y()<=rec.y()+rec.height());
+    return (xin&&yin);
 }
 
 bool MainWindow::canBuyTower() const

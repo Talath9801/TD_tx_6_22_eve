@@ -6,6 +6,7 @@
 #include "towerposition.h"
 #include "tower.h"
 
+//#include <string>
 
 
 namespace Ui {
@@ -36,6 +37,9 @@ public:
 
 	AudioPlayer* audioPlayer() const;
 	QList<Enemy *> enemyList() const;
+    //string sdfa="sf";
+    int remember_tower_kind=0;
+    bool point_in_rect(QRect &,QPoint &);
 
 protected:
 	void paintEvent(QPaintEvent *);
@@ -55,6 +59,7 @@ private:
 	void drawPlayerGold(QPainter *painter);
 	void doGameOver();
 	void preLoadWavesInfo();
+    QRect rec1=QRect(970,10,250,80);
 
 private:
 	Ui::MainWindow *		ui;

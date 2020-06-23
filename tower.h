@@ -30,10 +30,10 @@ public:
 public slots:
     void removeTower();//拆塔
 
-private slots:
+public slots:
     void shot();
 
-private:
+protected:
     bool if_on_fire;
     int	 range_of_fire;
     int	 per_damage;
