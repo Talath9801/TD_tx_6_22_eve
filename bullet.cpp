@@ -20,7 +20,7 @@ Bullet::Bullet(QPoint ori_posi, QPoint enemy_posi, int _damage, Enemy *the_e,
 
 void Bullet::draw(QPainter *painter) const
 {
-    painter->drawPixmap(bullet_position, bullet_picture);
+    painter->drawPixmap(bullet_position.x(),bullet_position.y(),15,15, bullet_picture);
 }
 void Bullet::setposition(QPoint _position)
 {
