@@ -17,7 +17,7 @@
 			<key>spawnTime</key>
                         <integer>3000</integer>
                         <key>enemyType</key>
-                        <integer>0</integer>
+                        <integer>1</integer>
 		</dict>
 		<dict>
 			<key>data</key>

@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     audioplayer.cpp \
     plistreader.cpp \
     tlymcell.cpp \
-    blymcell.cpp
+    blymcell.cpp \
+    enemyplus.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -36,7 +37,8 @@ HEADERS  += mainwindow.h \
     audioplayer.h \
     plistreader.h \
     tlymcell.h \
-    blymcell.h
+    blymcell.h \
+    enemyplus.h
 
 FORMS    += mainwindow.ui
 
