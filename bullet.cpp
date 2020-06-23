@@ -4,55 +4,51 @@
 #include <QPainter>
 #include <QPropertyAnimation>
 
-const QSize Bullet::ms_fixedSize(8, 8);
+const QSize Bullet::sizeofBullet(15,15);
 
-Bullet::Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target,
-			   MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/bullet.png")*/)
-	: m_startPos(startPos)
-	, m_targetPos(targetPoint)
-	, m_sprite(sprite)
-	, m_currentPos(startPos)
-	, m_target(target)
-	, m_game(game)
-	, m_damage(damage)
+Bullet::Bullet(QPoint ori_posi, QPoint enemy_posi, int _damage, Enemy *the_e,
+               MainWindow *mw, const QPixmap &_pict)
+    : originPosition(ori_posi)
+    , enemyPosition(enemy_posi)
+    , bullet_picture(_pict)
+    , bullet_position(ori_posi)
+    , the_enemy(the_e)
+    , mainw(mw)
+    , perdam(_damage)
 {
 }
 
 void Bullet::draw(QPainter *painter) const
 {
-	painter->drawPixmap(m_currentPos, m_sprite);
+    painter->drawPixmap(bullet_position, bullet_picture);
+}
+void Bullet::setposition(QPoint _position)
+{
+    bullet_position=_position;
+}
+
+QPoint Bullet::cu_position() const
+{
+    return bullet_position;
 }
 
 void Bullet::move()
 {
 	// 100毫秒内击中敌人
-	static const int duration = 100;
-	QPropertyAnimation *animation = new QPropertyAnimation(this, "m_currentPos");
-	animation->setDuration(duration);
-	animation->setStartValue(m_startPos);
-	animation->setEndValue(m_targetPos);
-	connect(animation, SIGNAL(finished()), this, SLOT(hitTarget()));
+    static const int time_to_enemy = 100;
+    QPropertyAnimation *animation = new QPropertyAnimation(this, "bullet_position");
+    animation->setDuration(time_to_enemy);
+    animation->setStartValue(originPosition);
+    animation->setEndValue(enemyPosition);
+    connect(animation, SIGNAL(finished()), this, SLOT(get_to_enemy()));
 
 	animation->start();
 }
 
-void Bullet::hitTarget()
+void Bullet::get_to_enemy()
 {
-	// 这样处理的原因是:
-	// 可能多个炮弹击中敌人,而其中一个将其消灭,导致敌人delete
-	// 后续炮弹再攻击到的敌人就是无效内存区域
-	// 因此先判断下敌人是否还有效
-	if (m_game->enemyList().indexOf(m_target) != -1)
-		m_target->getDamage(m_damage);
-	m_game->removedBullet(this);
+    if (mainw->enemyList().indexOf(the_enemy) != -1)
+        the_enemy->getDamage(perdam);
+    mainw->removedBullet(this);
 }
 
-void Bullet::setCurrentPos(QPoint pos)
-{
-	m_currentPos = pos;
-}
-
-QPoint Bullet::currentPos() const
-{
-	return m_currentPos;
-}

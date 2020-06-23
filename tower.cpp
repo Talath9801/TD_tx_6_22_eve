@@ -9,13 +9,13 @@
 #include <QVector2D>
 #include <QtMath>
 
-const QSize Tower::sizeofTower(42, 42);
+const QSize Tower::sizeofTower(80, 80);
 
 Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/)
     : if_on_fire(false)
     , range_of_fire(110)
     , per_damage(10)
-    , rate_of_attacking(1000)
+    , rate_of_attacking(500)
     , the_enemy(NULL)
     , mainw(game)
     , tower_position(pos)
@@ -58,7 +58,7 @@ void Tower::draw(QPainter *painter) const
 	painter->save();
     painter->setPen(Qt::yellow);
     painter->drawEllipse(tower_position, range_of_fire, range_of_fire);
-    painter->drawPixmap(tower_position.x()-sizeofTower.width()/2,tower_position.y()-sizeofTower.height()/2,50,50, tower_picture);
+    painter->drawPixmap(tower_position.x()-sizeofTower.width()/2,tower_position.y()-sizeofTower.height()/2,80,80,tower_picture);
     painter->restore();
 
 }

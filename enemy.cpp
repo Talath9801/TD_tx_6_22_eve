@@ -20,7 +20,7 @@ Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* 
 	, m_active(false)
 	, m_maxHp(40)
 	, m_currentHp(40)
-    , m_walkingSpeed(1.0)
+    , m_walkingSpeed(2.5)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
 	, m_game(game)
@@ -94,17 +94,14 @@ void Enemy::getRemoved()
 
 	foreach (Tower *attacker, m_attackedTowersList)
         attacker->killcurrentE();
-	// 通知game,此敌人已经阵亡
-	m_game->removedEnemy(this);
+    m_game->removedEnemy(this);
 }
 
 void Enemy::getDamage(int damage)
 {
     //m_game->audioPlayer()->playSound(LaserShootSound);
 	m_currentHp -= damage;
-
-	// 阵亡,需要移除
-	if (m_currentHp <= 0)
+    if (m_currentHp <= 0)
 	{
         //m_game->audioPlayer()->playSound(EnemyDestorySound);
 		m_game->awardGold(200);
@@ -117,7 +114,7 @@ void Enemy::getAttacked(Tower *attacker)
 	m_attackedTowersList.push_back(attacker);
 }
 
-// 表明敌人已经逃离了攻击范围
+
 void Enemy::gotLostSight(Tower *attacker)
 {
 	m_attackedTowersList.removeOne(attacker);

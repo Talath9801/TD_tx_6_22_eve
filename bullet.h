@@ -13,30 +13,30 @@ class MainWindow;
 class Bullet : QObject
 {
 	Q_OBJECT
-	Q_PROPERTY(QPoint m_currentPos READ currentPos WRITE setCurrentPos)
+    Q_PROPERTY(QPoint bullet_position READ cu_position WRITE setposition)
 
 public:
-	Bullet(QPoint startPos, QPoint targetPoint, int damage, Enemy *target,
-		   MainWindow *game, const QPixmap &sprite = QPixmap(":/image/bullet.png"));
+    Bullet(QPoint ori_posi, QPoint enemy_posi, int _damage, Enemy *the_e,
+           MainWindow *mw, const QPixmap &_pict = QPixmap(":/image/bullet.png"));
 
 	void draw(QPainter *painter) const;
 	void move();
-	void setCurrentPos(QPoint pos);
-	QPoint currentPos() const;
+    void setposition(QPoint pos);
+    QPoint cu_position() const;
 
 private slots:
-	void hitTarget();
+    void get_to_enemy();
 
 private:
-	const QPoint	m_startPos;
-	const QPoint	m_targetPos;
-	const QPixmap	m_sprite;
-	QPoint			m_currentPos;
-	Enemy *			m_target;
-	MainWindow *	m_game;
-	int				m_damage;
+    const QPoint	originPosition;
+    const QPoint	enemyPosition;
+    const QPixmap	bullet_picture;
+    QPoint			bullet_position;
+    Enemy *			the_enemy;
+    MainWindow *	mainw;
+    int				perdam;
 
-	static const QSize ms_fixedSize;
+    static const QSize sizeofBullet;
 };
 
 #endif // BULLET_H
