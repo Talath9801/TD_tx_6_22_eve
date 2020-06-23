@@ -15,6 +15,7 @@
 #include <QtDebug>
 
 
+
 static const int maxTowerCost = 500;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -346,10 +347,25 @@ bool MainWindow::loadWave()
 	{
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
 		int spawnTime = dict.value("spawnTime").toInt();
+        int enemyType =dict.value("enemyType").toInt();
 
-		Enemy *enemy = new Enemy(startWayPoint, this);
+        switch(enemyType)
+        {
+         case 0:
+        {
+            Enemy *enemy = new Enemy(startWayPoint, this);
+            m_enemyList.push_back(enemy);
+            QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
+        }
+            break;
+
+        default:
+            //std::cout<<"error"<<endl;
+            exit(-1);
+        }
+        /*Enemy *enemy = new Enemy(startWayPoint, this);
 		m_enemyList.push_back(enemy);
-		QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
+        QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));*/
 	}
 
 	return true;

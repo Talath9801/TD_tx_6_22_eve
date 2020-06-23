@@ -37,7 +37,7 @@ public:
 
 	AudioPlayer* audioPlayer() const;
 	QList<Enemy *> enemyList() const;
-    //string sdfa="sf";
+    //std::string sdfa="sf";
     int remember_tower_kind=0;
     bool point_in_rect(QRect &,QPoint &);
 
