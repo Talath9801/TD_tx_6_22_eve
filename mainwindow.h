@@ -27,6 +27,9 @@ public:
 
 	void getHpDamage(int damage = 1);
 	void removedEnemy(Enemy *enemy);
+    //新加
+    void removedTower(Tower *tower);
+
 	void removedBullet(Bullet *bullet);
 	void addBullet(Bullet *bullet);
 	void awardGold(int gold);

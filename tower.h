@@ -16,7 +16,7 @@ class Tower : QObject
 	Q_OBJECT
 public:
 	Tower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
-	~Tower();
+    ~Tower();
 
 	void draw(QPainter *painter) const;
     void checkE();
@@ -27,6 +27,9 @@ public:
     void damageE();
     void cantSeeE();
 
+public slots:
+    void removeTower();//拆塔
+
 private slots:
     void shot();
 
@@ -35,10 +38,12 @@ private:
     int	 range_of_fire;
     int	 per_damage;
     int	 rate_of_attacking;
+    int  life_span;
 
     Enemy *			the_enemy;
     MainWindow *	mainw;
     QTimer *		tower_timer;
+    QTimer *        t_life_timer;
     const QPoint	tower_position;
     const QPixmap	tower_picture;
 

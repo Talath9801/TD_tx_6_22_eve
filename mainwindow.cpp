@@ -232,6 +232,12 @@ void MainWindow::removedEnemy(Enemy *enemy)
 		}
 	}
 }
+void MainWindow::removedTower(Tower *tower)
+{
+    Q_ASSERT(tower);
+    m_towersList.removeOne(tower);
+    delete tower;
+}
 
 void MainWindow::removedBullet(Bullet *bullet)
 {
