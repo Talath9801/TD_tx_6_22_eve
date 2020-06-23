@@ -14,5 +14,8 @@
         <file>image/enemyplus.png</file>
         <file>image/hiv.png</file>
         <file>image/bkiller.png</file>
+        <file>image/tlymcell.png</file>
+        <file>image/phagocyte.png</file>
+        <file>image/blymcell.png</file>
     </qresource>
 </RCC>

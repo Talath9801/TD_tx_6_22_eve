@@ -25,9 +25,9 @@ Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/
     tower_timer = new QTimer(this);
     connect(tower_timer, SIGNAL(timeout()), this, SLOT(shot()));
 
-    //t_life_timer=new QTimer(this);
-    //connect(tower_timer,SIGNAL(timeout()),this,SLOT(removeTower()));
-    //tower_timer->start(life_span);
+    /*t_life_timer=new QTimer;
+    connect(t_life_timer,SIGNAL(timeout()),this,SLOT(removeTower()));
+    tower_timer->start(life_span);//在lifespan之后调用removeTower()*/
 
 }
 
@@ -38,20 +38,10 @@ Tower::~Tower()
 
     delete t_life_timer;
     t_life_timer=NULL;
-
-    mainw=NULL;
-
-    //if(this->the_enemy)this->the_enemy->gotLostSight(this);
-    //mainw->removedTower(this);
-    //if(this->the_enemy)delete this->the_enemy;
-    //the_enemy=NULL;
-    //mainw->removedTower(this);
 }
 void Tower::removeTower()
 {
-    //the_enemy=NULL;
-    //this->~Tower();
-    //mainw->removedTower(this);
+    mainw->removedTower(this);
 }
 
 void Tower::checkE()//看范围内的敌人
