@@ -110,19 +110,27 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 	auto it = m_towerPositionsList.begin();
 	while (it != m_towerPositionsList.end())
 	{
-        if (canBuyTower() && it->containPoint(pressPoint) && !it->hasTower())
+        if (canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton)
 		{
 			m_audioPlayer->playSound(TowerPlaceSound);
 			m_playrGold -= TowerCost;
-			it->setHasTower();
+            //it->setHasTower();
 
 			Tower *tower = new Tower(it->centerPos(), this);
+            it->setHasTower(tower);
 			m_towersList.push_back(tower);
 			update();
 			break;
 		}
+        else if (it->containPoint(pressPoint)&&it->hasTower()&&event->button()==Qt::RightButton)
+        {
+            removedTower(it->the_tower_in);
+            it->the_tower_in=NULL;
+            it->setNotHasTower();
+        }
 
 		++it;
+
 	}
 }
 

@@ -28,9 +28,10 @@ bool TowerPosition::hasTower() const
 	return m_hasTower;
 }
 
-void TowerPosition::setHasTower(bool hasTower/* = true*/)
+void TowerPosition::setHasTower(Tower * tower_put_in,bool hasTower/* = true*/)
 {
 	m_hasTower = hasTower;
+    the_tower_in=tower_put_in;
 }
 
 void TowerPosition::draw(QPainter *painter) const
