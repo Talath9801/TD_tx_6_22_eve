@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     plistreader.cpp \
     tlymcell.cpp \
     blymcell.cpp \
-    enemyplus.cpp
+    enemyplus.cpp \
+    enemyharmonway.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     plistreader.h \
     tlymcell.h \
     blymcell.h \
-    enemyplus.h
+    enemyplus.h \
+    enemyharmonway.h
 
 FORMS    += mainwindow.ui
 

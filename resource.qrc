@@ -17,5 +17,6 @@
         <file>image/tlymcell.png</file>
         <file>image/phagocyte.png</file>
         <file>image/blymcell.png</file>
+        <file>image/enemyharmonway.png</file>
     </qresource>
 </RCC>

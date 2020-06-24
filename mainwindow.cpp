@@ -3,6 +3,7 @@
 #include "waypoint.h"
 #include "enemy.h"
 #include "enemyplus.h"
+#include "enemyharmonway.h"
 #include "bullet.h"
 #include "audioplayer.h"
 #include "plistreader.h"
@@ -23,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , _waves(0)
-    , myHp(5)
+    , myHp(50)
     , mymoney(1000)
     , _gameEnded(false)
     , _gameWin(false)
@@ -360,6 +361,13 @@ bool MainWindow::loadWave()
         case 1:
         {
             EnemyPlus *enemy = new EnemyPlus(startWayPoint, this);
+            _enemyList.push_back(enemy);
+            QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
+        }
+            break;
+        case 2:
+        {
+             EnemyHarmOnWay *enemy = new EnemyHarmOnWay(startWayPoint, this);
             _enemyList.push_back(enemy);
             QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
         }
