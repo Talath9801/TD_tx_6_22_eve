@@ -18,5 +18,6 @@
         <file>image/blymcell.png</file>
         <file>image/enemyharmonway.png</file>
         <file>image/enemydouble.png</file>
+        <file>image/hivplus.png</file>
     </qresource>
 </RCC>
