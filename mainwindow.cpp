@@ -44,6 +44,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 设置300ms后游戏启动
     QTimer::singleShot(300, this, SLOT(gameStart()));
+
+    //decreaseMoney(30);
 }
 
 MainWindow::~MainWindow()
@@ -215,10 +217,17 @@ void MainWindow::doGameOver()
     }
 }
 
-void MainWindow::awardGold(int gold)
+void MainWindow::awardmoney(int money)
 {
-    mymoney += gold;
+    mymoney += money;
     update();
+}
+void MainWindow::decreaseMoney(int money)
+{
+    mymoney -=money;
+    update();
+    if(mymoney<0)
+        doGameOver();
 }
 
 AudioPlayer *MainWindow::audioPlayer() const

@@ -5,6 +5,7 @@
 #include <QPoint>
 #include <QSize>
 #include <QPixmap>
+#include <mainwindow.h>
 
 class WayPoint;
 class QPainter;
@@ -31,6 +32,10 @@ public:
 
 public slots:
 	void doActivate();
+public slots:
+    virtual void dospecial(){}
+//protected slots:
+  //  void doHarmOnWay(){mainw->getHpDamage();}
 
 protected:
 	bool			m_active;
@@ -39,8 +44,10 @@ protected:
 	qreal			m_walkingSpeed;
     QPoint			m_pos;
 	WayPoint *		m_destinationWayPoint;
-	MainWindow *	m_game;
+    MainWindow *	mainw;
 	QList<Tower *>	m_attackedTowersList;
+
+    int rate_of_harm=1000;
 
 	const QPixmap	m_sprite;
 	static const QSize ms_fixedSize;

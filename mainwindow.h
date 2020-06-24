@@ -33,7 +33,9 @@ public:
 
 	void removedBullet(Bullet *bullet);
 	void addBullet(Bullet *bullet);
-	void awardGold(int gold);
+    void awardmoney(int money);
+    void decreaseMoney(int money);
+
 
 	AudioPlayer* audioPlayer() const;
 	QList<Enemy *> enemyList() const;

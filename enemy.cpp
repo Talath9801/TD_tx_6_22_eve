@@ -23,7 +23,7 @@ Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* 
     , m_walkingSpeed(2.5)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
-	, m_game(game)
+    , mainw(game)
 	, m_sprite(sprite)
 {
 }
@@ -32,7 +32,7 @@ Enemy::~Enemy()
 {
 	m_attackedTowersList.clear();
 	m_destinationWayPoint = NULL;
-	m_game = NULL;
+    mainw = NULL;
 }
 
 void Enemy::doActivate()
@@ -54,8 +54,8 @@ void Enemy::move()
 		}
 		else
 		{
-            m_game->getHpDamage();
-			m_game->removedEnemy(this);
+            mainw->getHpDamage();
+            mainw->removedEnemy(this);
 			return;
 		}
 	}
@@ -94,7 +94,7 @@ void Enemy::getRemoved()
 
 	foreach (Tower *attacker, m_attackedTowersList)
         attacker->killcurrentE();
-    m_game->removedEnemy(this);
+    mainw->removedEnemy(this);
 }
 
 void Enemy::getDamage(int damage)
@@ -105,7 +105,7 @@ void Enemy::getDamage(int damage)
 	{
 
         //m_game->audioPlayer()->playSound(EnemyDestorySound);
-		m_game->awardGold(200);
+        mainw->awardmoney(200);
         getRemoved();
 	}
 }
