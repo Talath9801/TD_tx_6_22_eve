@@ -10,13 +10,10 @@ public:
     ~EnemyHarmOnWay();
     void doHarmOnWay();
     QTimer *timer_enemyharmonway;
+
 public slots:
     void dospecial();
-/*protected:
-    QTimer *   timer_enemyharmonway;
-    int rate_of_harm=1000;*/
-/*public slots:
-    void doHarmOnWay();*/
+
 };
 
 #endif // ENEMYHARMONWAY_H

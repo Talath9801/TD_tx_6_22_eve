@@ -20,7 +20,7 @@ public:
 	~Enemy();
 
 	void draw(QPainter *painter) const;
-	void move();
+    virtual void move();
 	void getDamage(int damage);
 	void getRemoved();
 	void getAttacked(Tower *attacker);

@@ -9,7 +9,7 @@
 			<key>spawnTime</key>
 			<integer>100</integer>
                         <key>enemyType</key>
-                        <integer>0</integer>
+                        <integer>2</integer>
 		</dict>
 		<dict>
 			<key>data</key>
@@ -17,7 +17,7 @@
 			<key>spawnTime</key>
                         <integer>3000</integer>
                         <key>enemyType</key>
-                        <integer>1</integer>
+                        <integer>0</integer>
 		</dict>
 		<dict>
 			<key>data</key>
@@ -25,7 +25,7 @@
 			<key>spawnTime</key>
                         <integer>6000</integer>
                         <key>enemyType</key>
-                        <integer>0</integer>
+                        <integer>1</integer>
 		</dict>
 		<dict>
 			<key>data</key>
@@ -33,7 +33,7 @@
 			<key>spawnTime</key>
                         <integer>9000</integer>
                         <key>enemyType</key>
-                        <integer>2</integer>
+                        <integer>0</integer>
 		</dict>
 		<dict>
 			<key>data</key>
@@ -59,7 +59,7 @@
 			<key>spawnTime</key>
 			<integer>1000</integer>
                         <key>enemyType</key>
-                        <integer>0</integer>
+                        <integer>2</integer>
 		</dict>
 		<dict>
 			<key>data</key>

@@ -18,7 +18,7 @@
 
 
 
-static const int maxTowerCost = 500;
+static const int maxTowerCost = 300;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

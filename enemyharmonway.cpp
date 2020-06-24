@@ -2,17 +2,17 @@
 #include <QTimer>
 #include <mainwindow.h>
 #include "utility.h"
+#include "waypoint.h"
 
 EnemyHarmOnWay::EnemyHarmOnWay(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite)
     :Enemy (startWayPoint,game,sprite)
 {
-    //mainw->decreaseMoney(30);
     timer_enemyharmonway=new QTimer(this);
     connect(timer_enemyharmonway,SIGNAL(timeout()),this,SLOT(dospecial()));
-    //doHarmOnWay();
     timer_enemyharmonway->start(1000);
 
 }
+
 void EnemyHarmOnWay::dospecial()
 {
     doHarmOnWay();
