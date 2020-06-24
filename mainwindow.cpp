@@ -141,6 +141,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             //m_playrGold -= TowerCost;
 
             Tower *tower = new Tower(it->centerPos(), this);
+            //tower->located_positio
             it->setHasTower(tower);
             _towersList.push_back(tower);
             mymoney-=tower->get_tower_cost();

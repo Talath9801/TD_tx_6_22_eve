@@ -42,6 +42,7 @@ public:
     //std::string sdfa="sf";
     int remember_tower_kind=0;
     bool point_in_rect(QRect &,QPoint &);
+    QList<TowerPosition>	_towerPositionsList;
 
 protected:
 	void paintEvent(QPaintEvent *);
@@ -75,7 +76,7 @@ private:
     bool					_gameWin;
     AudioPlayer *			_audioPlayer;
     QList<QVariant>			_wavesInfo;
-    QList<TowerPosition>	_towerPositionsList;
+    //QList<TowerPosition>	_towerPositionsList;
     QList<Tower *>			_towersList;
     QList<WayPoint *>		_wayPointsList;
     QList<Enemy *>			_enemyList;

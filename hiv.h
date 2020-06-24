@@ -2,6 +2,8 @@
 #define HIV_H
 
 #include "enemy.h"
+#include "towerposition.h"
+
 class HIV:public Enemy
 {
 public:

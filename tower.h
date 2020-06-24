@@ -5,12 +5,15 @@
 #include <QSize>
 #include <QPixmap>
 #include <QObject>
-#include <string>
+
+//#include <string>
 
 class QPainter;
 class Enemy;
 class MainWindow;
 class QTimer;
+//class TowerPosition;
+
 
 class Tower : QObject
 {
@@ -32,10 +35,9 @@ public:
     void set_per_damage(int x){per_damage=x;}
     void set_rate_of_attacking(int x){rate_of_attacking=x;}
     void set_tower_cost(int x){tower_cost=x;}
-    //void set_tower_typename(std::string str){tower_typename=str;}
-    //std::string get_tower_typename(){return tower_typename;}
     int  get_tower_cost(){return tower_cost;}
-
+    QPoint get_tower_pos(){return tower_position;}
+    //TowerPosition  *located_position;
 public slots:
     void removeTower();//拆塔
 
