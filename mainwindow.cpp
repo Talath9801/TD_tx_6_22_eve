@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "waypoint.h"
 #include "enemy.h"
+#include "enemydouble.h"
 #include "enemyplus.h"
 #include "enemyharmonway.h"
 #include "bullet.h"
@@ -382,6 +383,13 @@ bool MainWindow::loadWave()
         }
             break;
 
+        case 3:
+        {
+             EnemyDouble *enemy = new EnemyDouble(startWayPoint, this);
+            _enemyList.push_back(enemy);
+            QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
+        }
+            break;
         default:
             exit(-1);
         }

@@ -1,7 +1,7 @@
 #ifndef ENEMYDOUBLE_H
 #define ENEMYDOUBLE_H
 
-#include <enemy.h>
+#include "enemy.h"
 class EnemyDouble:public Enemy
 {
 public:
