@@ -5,6 +5,7 @@
 #include <QSize>
 #include <QPixmap>
 #include <QObject>
+#include <string>
 
 class QPainter;
 class Enemy;
@@ -31,7 +32,8 @@ public:
     void set_per_damage(int x){per_damage=x;}
     void set_rate_of_attacking(int x){rate_of_attacking=x;}
     void set_tower_cost(int x){tower_cost=x;}
-
+    //void set_tower_typename(std::string str){tower_typename=str;}
+    //std::string get_tower_typename(){return tower_typename;}
     int  get_tower_cost(){return tower_cost;}
 
 public slots:
@@ -54,7 +56,7 @@ protected:
     QTimer *        t_life_timer;
     const QPoint	tower_position;
     const QPixmap	tower_picture;
-
+    //std::string     tower_typename="tower";
     static const QSize sizeofTower;
 };
 
