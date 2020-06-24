@@ -59,23 +59,25 @@ private:
 	void drawPlayerGold(QPainter *painter);
 	void doGameOver();
 	void preLoadWavesInfo();
-    QRect rec1=QRect(970,10,250,80);
-    QRect rec2=QRect(970,100,250,80);
+    QRect rec0=QRect(970,10,250,80);
+    QRect rec1=QRect(970,100,250,80);
+    QRect rec2=QRect(970,190,250,80);
+    QRect rec3=QRect(970,280,250,80);
 
 private:
 	Ui::MainWindow *		ui;
-	int						m_waves;
-	int						m_playerHp;
-	int						m_playrGold;
-	bool					m_gameEnded;
-	bool					m_gameWin;
-	AudioPlayer *			m_audioPlayer;
-	QList<QVariant>			m_wavesInfo;
-	QList<TowerPosition>	m_towerPositionsList;
-	QList<Tower *>			m_towersList;
-	QList<WayPoint *>		m_wayPointsList;
-	QList<Enemy *>			m_enemyList;
-	QList<Bullet *>			m_bulletList;
+    int					     _waves;
+    int						myHp;
+    int						mymoney;
+    bool					_gameEnded;
+    bool					_gameWin;
+    AudioPlayer *			_audioPlayer;
+    QList<QVariant>			_wavesInfo;
+    QList<TowerPosition>	_towerPositionsList;
+    QList<Tower *>			_towersList;
+    QList<WayPoint *>		_wayPointsList;
+    QList<Enemy *>			_enemyList;
+    QList<Bullet *>			_bulletList;
 };
 
 #endif // MAINWINDOW_H

@@ -103,9 +103,10 @@ void Enemy::getDamage(int damage)
 	m_currentHp -= damage;
     if (m_currentHp <= 0)
 	{
+
         //m_game->audioPlayer()->playSound(EnemyDestorySound);
 		m_game->awardGold(200);
-		getRemoved();
+        getRemoved();
 	}
 }
 

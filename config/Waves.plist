@@ -120,5 +120,55 @@
                         <integer>0</integer>
 		</dict>
 	</array>
+        <array>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>100</integer>
+                        <key>enemyType</key>
+                        <integer>0</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>3000</integer>
+                        <key>enemyType</key>
+                        <integer>1</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>6000</integer>
+                        <key>enemyType</key>
+                        <integer>0</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>9000</integer>
+                        <key>enemyType</key>
+                        <integer>0</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>12000</integer>
+                        <key>enemyType</key>
+                        <integer>0</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>15000</integer>
+                        <key>enemyType</key>
+                        <integer>0</integer>
+                </dict>
+        </array>
 </array>
 </plist>

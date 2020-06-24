@@ -25,6 +25,9 @@ public:
 	void getAttacked(Tower *attacker);
 	void gotLostSight(Tower *attacker);
 	QPoint pos() const;
+    void setmaxHp(int x){m_maxHp=x;}
+    void setcurrentHp(int x){m_currentHp=x;}
+    void setwalkingspeed(int x){m_walkingSpeed=x;}
 
 public slots:
 	void doActivate();

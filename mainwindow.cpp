@@ -22,11 +22,11 @@ static const int maxTowerCost = 500;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , m_waves(0)
-    , m_playerHp(5)
-    , m_playrGold(1000)
-    , m_gameEnded(false)
-    , m_gameWin(false)
+    , _waves(0)
+    , myHp(5)
+    , mymoney(1000)
+    , _gameEnded(false)
+    , _gameWin(false)
 {
     ui->setupUi(this);
 
@@ -34,8 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
     loadTowerPositions();
     addWayPoints();
 
-    m_audioPlayer = new AudioPlayer(this);
-    m_audioPlayer->startBGM();
+    _audioPlayer = new AudioPlayer(this);
+    _audioPlayer->startBGM();
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
@@ -68,7 +68,7 @@ void MainWindow::loadTowerPositions()
         QMap<QString, QVariant> point = dict.toMap();
         int x = point.value("x").toInt();
         int y = point.value("y").toInt();
-        m_towerPositionsList.push_back(QPoint(x, y));
+        _towerPositionsList.push_back(QPoint(x, y));
     }
 
     file.close();
@@ -76,9 +76,9 @@ void MainWindow::loadTowerPositions()
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
-    if (m_gameEnded || m_gameWin)
+    if (_gameEnded || _gameWin)
     {
-        QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
+        QString text = _gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
         QPainter painter(this);
         painter.setPen(QPen(Qt::red));
         painter.drawText(rect(), Qt::AlignCenter, text);
@@ -88,16 +88,16 @@ void MainWindow::paintEvent(QPaintEvent *)
     QPixmap cachePix(":/image/Bg.png");
     QPainter cachePainter(&cachePix);
 
-    foreach (const TowerPosition &towerPos, m_towerPositionsList)
+    foreach (const TowerPosition &towerPos, _towerPositionsList)
         towerPos.draw(&cachePainter);
 
-    foreach (const Tower *tower, m_towersList)
+    foreach (const Tower *tower, _towersList)
         tower->draw(&cachePainter);
 
-    foreach (const Enemy *enemy, m_enemyList)
+    foreach (const Enemy *enemy, _enemyList)
         enemy->draw(&cachePainter);
 
-    foreach (const Bullet *bullet, m_bulletList)
+    foreach (const Bullet *bullet, _bulletList)
         bullet->draw(&cachePainter);
 
     drawWave(&cachePainter);
@@ -106,41 +106,39 @@ void MainWindow::paintEvent(QPaintEvent *)
 
     QPainter painter(this);
     painter.drawPixmap(0, 0, cachePix);
-
+    //                                                         画出棕色背景底图
     painter.setBrush(QColor("#deb887"));
     painter.drawRect(rec1);//第一栏
     painter.drawRect(rec2);//第二栏
-    //painter.drawRect(970,190,250,80);
-    //painter.drawRect(970,280,250,80);
-    //if(remember_tower_kind==1)painter.drawRect(970,280,250,80);
 
-    QPixmap m_cell(":/image/tlymcell.png");//画侧栏第一个，TLymCell
-    painter.drawPixmap(970,10,80,80,m_cell);
-    painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,10,170,80),QString("攻击范围110，攻击频率400ms，每次对敌人造成的伤害8，花费300"));
-
-    m_cell.load(":/image/blymcell.png");
+    //                                                         画细胞的图片和文字信息
+    QPixmap m_cell(":/image/tlymcell.png");//
     painter.drawPixmap(970,100,80,80,m_cell);
     painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,100,170,80),QString("攻击范围110，攻击频率400ms，减慢敌人速度"));
+    painter.drawText(QRect(1050,100,170,80),QString("攻击范围110，攻击频率400ms，每次对敌人造成的伤害8，花费300"));
+
+    m_cell.load(":/image/blymcell.png");
+    painter.drawPixmap(970,190,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1050,190,170,80),QString("攻击范围110，攻击频率400ms，减慢敌人速度"));
 
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     QPoint pressPoint = event->pos();
-    auto it = m_towerPositionsList.begin();
-    while (it != m_towerPositionsList.end())
+    auto it = _towerPositionsList.begin();
+    while (it != _towerPositionsList.end())
     {
         if (canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==0)
         {
-            m_audioPlayer->playSound(TowerPlaceSound);
+            _audioPlayer->playSound(TowerPlaceSound);
             //m_playrGold -= TowerCost;
 
             Tower *tower = new Tower(it->centerPos(), this);
             it->setHasTower(tower);
-            m_towersList.push_back(tower);
-            m_playrGold-=tower->get_tower_cost();
+            _towersList.push_back(tower);
+            mymoney-=tower->get_tower_cost();
             update();
             break;
         }
@@ -156,8 +154,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             //m_playrGold-=TowerCost;
             Tower *tower=new TLymCell(it->centerPos(),this);
             it->setHasTower(tower);
-            m_towersList.push_back(tower);
-            m_playrGold-=tower->get_tower_cost();
+            _towersList.push_back(tower);
+            mymoney-=tower->get_tower_cost();
             update();
             remember_tower_kind=0;
             break;
@@ -167,7 +165,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
     }
 
-    //点击侧栏，选择tower种类
+    //                                                              点击侧栏，选择tower种类，记录数值编号
     if(point_in_rect(rec1,pressPoint))
     {
         remember_tower_kind=1;   //数值改变已成功
@@ -183,7 +181,7 @@ bool MainWindow::point_in_rect(QRect &rec, QPoint &p)
 
 bool MainWindow::canBuyTower() const
 {
-    if (m_playrGold >= maxTowerCost)
+    if (mymoney >= maxTowerCost)
         return true;
     return false;
 }
@@ -191,26 +189,26 @@ bool MainWindow::canBuyTower() const
 void MainWindow::drawWave(QPainter *painter)
 {
     painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(400, 5, 100, 25), QString("WAVE : %1").arg(m_waves + 1));
+    painter->drawText(QRect(400, 5, 100, 25), QString("WAVE : %1").arg(_waves + 1));
 }
 
 void MainWindow::drawHP(QPainter *painter)
 {
     painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(30, 5, 100, 25), QString("HP : %1").arg(m_playerHp));
+    painter->drawText(QRect(30, 5, 100, 25), QString("HP : %1").arg(myHp));
 }
 
 void MainWindow::drawPlayerGold(QPainter *painter)
 {
     painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(200, 5, 200, 25), QString("GOLD : %1").arg(m_playrGold));
+    painter->drawText(QRect(200, 5, 200, 25), QString("GOLD : %1").arg(mymoney));
 }
 
 void MainWindow::doGameOver()
 {
-    if (!m_gameEnded)
+    if (!_gameEnded)
     {
-        m_gameEnded = true;
+        _gameEnded = true;
         // 此处应该切换场景到结束场景
         // 暂时以打印替代,见paintEvent处理
     }
@@ -218,54 +216,54 @@ void MainWindow::doGameOver()
 
 void MainWindow::awardGold(int gold)
 {
-    m_playrGold += gold;
+    mymoney += gold;
     update();
 }
 
 AudioPlayer *MainWindow::audioPlayer() const
 {
-    return m_audioPlayer;
+    return _audioPlayer;
 }
 
 void MainWindow::addWayPoints()
 {
     WayPoint *wayPoint1 = new WayPoint(QPoint(785,50));
-    m_wayPointsList.push_back(wayPoint1);
+    _wayPointsList.push_back(wayPoint1);
 
     WayPoint *wayPoint2 = new WayPoint(QPoint(785,480));
-    m_wayPointsList.push_back(wayPoint2);
+    _wayPointsList.push_back(wayPoint2);
     wayPoint2->setNextWayPoint(wayPoint1);
 
     WayPoint *wayPoint3 = new WayPoint(QPoint(582,480));
-    m_wayPointsList.push_back(wayPoint3);
+    _wayPointsList.push_back(wayPoint3);
     wayPoint3->setNextWayPoint(wayPoint2);
 
     WayPoint *wayPoint4 = new WayPoint(QPoint(582,165));
-    m_wayPointsList.push_back(wayPoint4);
+    _wayPointsList.push_back(wayPoint4);
     wayPoint4->setNextWayPoint(wayPoint3);
 
     WayPoint *wayPoint5 = new WayPoint(QPoint(373,165));
-    m_wayPointsList.push_back(wayPoint5);
+    _wayPointsList.push_back(wayPoint5);
     wayPoint5->setNextWayPoint(wayPoint4);
 
     WayPoint *wayPoint6 = new WayPoint(QPoint(373,480));
-    m_wayPointsList.push_back(wayPoint6);
+    _wayPointsList.push_back(wayPoint6);
     wayPoint6->setNextWayPoint(wayPoint5);
 
     WayPoint *wayPoint7 = new WayPoint(QPoint(160,480));
-    m_wayPointsList.push_back(wayPoint7);
+    _wayPointsList.push_back(wayPoint7);
     wayPoint7->setNextWayPoint(wayPoint6);
 
     WayPoint *wayPoint8 = new WayPoint(QPoint(160,50));
-    m_wayPointsList.push_back(wayPoint8);
+    _wayPointsList.push_back(wayPoint8);
     wayPoint8->setNextWayPoint(wayPoint7);
 }
 
 void MainWindow::getHpDamage(int damage/* = 1*/)
 {
-    m_audioPlayer->playSound(LifeLoseSound);
-    m_playerHp -= damage;
-    if (m_playerHp <= 0)
+    _audioPlayer->playSound(LifeLoseSound);
+    myHp -= damage;
+    if (myHp <= 0)
         doGameOver();
 }
 
@@ -273,15 +271,15 @@ void MainWindow::removedEnemy(Enemy *enemy)
 {
     Q_ASSERT(enemy);
 
-    m_enemyList.removeOne(enemy);
+    _enemyList.removeOne(enemy);
     delete enemy;
 
-    if (m_enemyList.empty())
+    if (_enemyList.empty())
     {
-        ++m_waves;
+        ++_waves;
         if (!loadWave())
         {
-            m_gameWin = true;
+            _gameWin = true;
             // 游戏胜利转到游戏胜利场景
             // 这里暂时以打印处理
         }
@@ -290,7 +288,7 @@ void MainWindow::removedEnemy(Enemy *enemy)
 void MainWindow::removedTower(Tower *tower)
 {
     Q_ASSERT(tower);
-    m_towersList.removeOne(tower);
+    _towersList.removeOne(tower);
     delete tower;
 }
 
@@ -298,7 +296,7 @@ void MainWindow::removedBullet(Bullet *bullet)
 {
     Q_ASSERT(bullet);
 
-    m_bulletList.removeOne(bullet);
+    _bulletList.removeOne(bullet);
     delete bullet;
 }
 
@@ -306,14 +304,14 @@ void MainWindow::addBullet(Bullet *bullet)
 {
     Q_ASSERT(bullet);
 
-    m_bulletList.push_back(bullet);
+    _bulletList.push_back(bullet);
 }
 
 void MainWindow::updateMap()
 {
-    foreach (Enemy *enemy, m_enemyList)
+    foreach (Enemy *enemy, _enemyList)
         enemy->move();
-    foreach (Tower *tower, m_towersList)
+    foreach (Tower *tower, _towersList)
         tower->checkE();
     update();
 }
@@ -331,18 +329,18 @@ void MainWindow::preLoadWavesInfo()
     reader.read(&file);
 
     // 获取波数信息
-    m_wavesInfo = reader.data();
+    _wavesInfo = reader.data();
 
     file.close();
 }
 
 bool MainWindow::loadWave()
 {
-    if (m_waves >= m_wavesInfo.size())
+    if (_waves >= _wavesInfo.size())
         return false;
 
-    WayPoint *startWayPoint = m_wayPointsList.back();
-    QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
+    WayPoint *startWayPoint = _wayPointsList.back();
+    QList<QVariant> curWavesInfo = _wavesInfo[_waves].toList();
 
     for (int i = 0; i < curWavesInfo.size(); ++i)
     {
@@ -355,25 +353,21 @@ bool MainWindow::loadWave()
         case 0:
         {
             Enemy *enemy = new Enemy(startWayPoint, this);
-            m_enemyList.push_back(enemy);
+            _enemyList.push_back(enemy);
             QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
         }
             break;
         case 1:
         {
             EnemyPlus *enemy = new EnemyPlus(startWayPoint, this);
-            m_enemyList.push_back(enemy);
+            _enemyList.push_back(enemy);
             QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
         }
             break;
 
         default:
-            //std::cout<<"error"<<endl;
             exit(-1);
         }
-        /*Enemy *enemy = new Enemy(startWayPoint, this);
-        m_enemyList.push_back(enemy);
-        QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));*/
     }
 
     return true;
@@ -381,7 +375,7 @@ bool MainWindow::loadWave()
 
 QList<Enemy *> MainWindow::enemyList() const
 {
-    return m_enemyList;
+    return _enemyList;
 }
 
 void MainWindow::gameStart()
