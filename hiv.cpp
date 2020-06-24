@@ -7,7 +7,7 @@ HIV::HIV(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite)
 }
 void HIV::getAttacked(Tower *attacker)
 {
-    if(donekilling==false)
+    if(num_can_kill>=1)
     {
         auto it = mainw->_towerPositionsList.begin();
         while (it != mainw->_towerPositionsList.end())
@@ -21,7 +21,7 @@ void HIV::getAttacked(Tower *attacker)
         }
         //                                上面要将attacker所在的塔基设置为“无塔”
         mainw->removedTower(attacker);
-        donekilling=true;
+        num_can_kill--;
     }
     else
     {
