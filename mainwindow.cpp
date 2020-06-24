@@ -112,7 +112,12 @@ void MainWindow::paintEvent(QPaintEvent *)
 
     QPainter painter(this);
     painter.drawPixmap(0, 0, cachePix);
-    //                                                         画出棕色背景底图
+    //  画出棕色背景底图
+    painter.setBrush(QColor("#cd853f"));
+    painter.setPen(Qt::NoPen);
+    painter.drawRect(955,0,277,640);
+
+
     painter.setBrush(QColor("#deb887"));
     painter.drawRect(rec1);//第一栏
     painter.drawRect(rec2);//第二栏
@@ -127,6 +132,19 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.drawPixmap(970,190,80,80,m_cell);
     painter.setPen(Qt::black);
     painter.drawText(QRect(1050,190,170,80),QString("攻击范围110，攻击频率400ms，减慢敌人速度"));
+
+
+    painter.setBrush(QColor("#cd853f"));
+    painter.setPen(Qt::NoPen);
+    painter.drawRect(0,638,1232,152);
+    painter.setBrush(QColor("#faebd7"));
+    painter.drawRect(5,645,200,140);
+    painter.drawRect(210,645,200,140);
+    painter.drawRect(415,645,200,140);
+    painter.drawRect(620,645,200,140);
+    painter.drawRect(825,645,200,140);
+    painter.drawRect(1030,645,200,140);
+
 
 }
 
