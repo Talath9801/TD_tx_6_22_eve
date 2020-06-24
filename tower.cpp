@@ -48,28 +48,28 @@ void Tower::removeTower()
 void Tower::checkE()//看范围内的敌人
 {
     if (the_enemy)//当前敌人
-	{
+    {
         if (!collisionWithCircle(tower_position, range_of_fire, the_enemy->pos(), 1))//塔与敌人的距离超过范围
             cantSeeE();//看不见敌人
-	}
-	else
-	{
-		// 遍历敌人,看是否有敌人在攻击范围内
+    }
+    else
+    {
+        // 遍历敌人,看是否有敌人在攻击范围内
         QList<Enemy *> enemyList = mainw->enemyList();
-		foreach (Enemy *enemy, enemyList)
-		{
+        foreach (Enemy *enemy, enemyList)
+        {
             if (collisionWithCircle(tower_position, range_of_fire, enemy->pos(), 1))
-			{
+            {
                 findEnemytoAttack(enemy);
-				break;
-			}
-		}
-	}
+                break;
+            }
+        }
+    }
 }
 
 void Tower::draw(QPainter *painter) const
 {
-	painter->save();
+    painter->save();
     painter->setPen(Qt::yellow);
     painter->drawEllipse(tower_position, range_of_fire, range_of_fire);
     painter->drawPixmap(tower_position.x()-sizeofTower.width()/2,tower_position.y()-sizeofTower.height()/2,80,80,tower_picture);
@@ -92,7 +92,7 @@ void Tower::findEnemytoAttack(Enemy *e)
 void Tower::shot()
 {
     Bullet *bullet = new Bullet(tower_position, the_enemy->pos(), per_damage, the_enemy, mainw);
-	bullet->move();
+    bullet->move();
     mainw->addBullet(bullet);
 }
 

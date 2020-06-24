@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     blymcell.cpp \
     enemyplus.cpp \
     enemyharmonway.cpp \
-    enemydouble.cpp
+    enemydouble.cpp \
+    hiv.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     blymcell.h \
     enemyplus.h \
     enemyharmonway.h \
-    enemydouble.h
+    enemydouble.h \
+    hiv.h
 
 FORMS    += mainwindow.ui
 

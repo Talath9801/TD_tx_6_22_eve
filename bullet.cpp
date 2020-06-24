@@ -34,7 +34,7 @@ QPoint Bullet::cu_position() const
 
 void Bullet::move()
 {
-	// 100毫秒内击中敌人
+    // 100毫秒内击中敌人
     static const int time_to_enemy = 100;
     QPropertyAnimation *animation = new QPropertyAnimation(this, "bullet_position");
     animation->setDuration(time_to_enemy);
@@ -42,7 +42,7 @@ void Bullet::move()
     animation->setEndValue(enemyPosition);
     connect(animation, SIGNAL(finished()), this, SLOT(get_to_enemy()));
 
-	animation->start();
+    animation->start();
 }
 
 void Bullet::get_to_enemy()

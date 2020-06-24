@@ -4,6 +4,7 @@
 #include "enemy.h"
 #include "enemydouble.h"
 #include "enemyplus.h"
+#include "hiv.h"
 #include "enemyharmonway.h"
 #include "bullet.h"
 #include "audioplayer.h"
@@ -377,7 +378,7 @@ bool MainWindow::loadWave()
             break;
         case 2:
         {
-             EnemyHarmOnWay *enemy = new EnemyHarmOnWay(startWayPoint, this);
+            EnemyHarmOnWay *enemy = new EnemyHarmOnWay(startWayPoint, this);
             _enemyList.push_back(enemy);
             QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
         }
@@ -385,7 +386,14 @@ bool MainWindow::loadWave()
 
         case 3:
         {
-             EnemyDouble *enemy = new EnemyDouble(startWayPoint, this);
+            EnemyDouble *enemy = new EnemyDouble(startWayPoint, this);
+            _enemyList.push_back(enemy);
+            QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
+        }
+            break;
+        case 4:
+        {
+            HIV *enemy = new HIV(startWayPoint, this);
             _enemyList.push_back(enemy);
             QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
         }

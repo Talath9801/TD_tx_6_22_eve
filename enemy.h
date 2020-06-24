@@ -23,7 +23,7 @@ public:
     virtual void move();
 	void getDamage(int damage);
 	void getRemoved();
-	void getAttacked(Tower *attacker);
+    virtual void getAttacked(Tower *attacker);
 	void gotLostSight(Tower *attacker);
 	QPoint pos() const;
     void setmaxHp(int x){m_maxHp=x;}
