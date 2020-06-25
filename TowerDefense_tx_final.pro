@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     towerrangeall.cpp \
     towertunshi.cpp \
     bulleteat.cpp \
-    tunshiplus.cpp
+    tunshiplus.cpp \
+    bulletslow.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -54,7 +55,8 @@ HEADERS  += mainwindow.h \
     towerrangeall.h \
     towertunshi.h \
     bulleteat.h \
-    tunshiplus.h
+    tunshiplus.h \
+    bulletslow.h
 
 FORMS    += mainwindow.ui
 
