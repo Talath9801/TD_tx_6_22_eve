@@ -23,6 +23,17 @@ void TowerTunshi::killcurrentE()
     can_eat--;
     if(can_eat<=0)
     {
+        //mainw->removedTower(this);
+        auto it = mainw->_towerPositionsList.begin();
+        while (it != mainw->_towerPositionsList.end())
+        {
+            if (it->containPoint(this->get_tower_pos()))
+            {
+                it->setNotHasTower();
+                break;
+            }
+            ++it;
+        }
         mainw->removedTower(this);
     }
 }
