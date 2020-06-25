@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     hiv.cpp \
     hivplus.cpp \
     towerrangeall.cpp \
-    towertunshi.cpp
+    towertunshi.cpp \
+    bulleteat.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -50,7 +51,8 @@ HEADERS  += mainwindow.h \
     hiv.h \
     hivplus.h \
     towerrangeall.h \
-    towertunshi.h
+    towertunshi.h \
+    bulleteat.h
 
 FORMS    += mainwindow.ui
 

@@ -22,7 +22,7 @@ public:
 	Tower(QPoint pos, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/tower.png"));
     ~Tower();
 
-	void draw(QPainter *painter) const;
+    virtual void draw(QPainter *painter) const;
     void checkE();
     virtual void killcurrentE();
     void attackE();
@@ -44,7 +44,7 @@ public slots:
     void removeTower();//拆塔
 
 public slots:
-    void shot();
+    virtual void shot();
 
 protected:
     bool if_on_fire;

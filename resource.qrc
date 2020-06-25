@@ -20,5 +20,6 @@
         <file>image/enemydouble.png</file>
         <file>image/hivplus.png</file>
         <file>image/towerrangeall.png</file>
+        <file>image/bulleteat.png</file>
     </qresource>
 </RCC>
