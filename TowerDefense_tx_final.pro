@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     enemyharmonway.cpp \
     enemydouble.cpp \
     hiv.cpp \
-    hivplus.cpp
+    hivplus.cpp \
+    towerrangeall.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -46,7 +47,8 @@ HEADERS  += mainwindow.h \
     enemyharmonway.h \
     enemydouble.h \
     hiv.h \
-    hivplus.h
+    hivplus.h \
+    towerrangeall.h
 
 FORMS    += mainwindow.ui
 

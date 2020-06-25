@@ -19,5 +19,6 @@
         <file>image/enemyharmonway.png</file>
         <file>image/enemydouble.png</file>
         <file>image/hivplus.png</file>
+        <file>image/towerrangeall.png</file>
     </qresource>
 </RCC>

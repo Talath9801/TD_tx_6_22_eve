@@ -24,6 +24,6 @@ EnemyHarmOnWay::~EnemyHarmOnWay()
 
 void EnemyHarmOnWay::doHarmOnWay()
 {
-    mainw->decreaseMoney(30);
+    mainw->decreaseMoney(20);
     //mainw->update();
 }

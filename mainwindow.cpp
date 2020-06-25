@@ -11,6 +11,7 @@
 #include "audioplayer.h"
 #include "plistreader.h"
 #include "tlymcell.h"
+#include "towerrangeall.h"
 #include <QPainter>
 #include <QMouseEvent>
 #include <QtGlobal>
@@ -128,10 +129,10 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.setPen(Qt::black);
     painter.drawText(QRect(1050,100,170,80),QString("攻击范围110，攻击频率400ms，每次对敌人造成的伤害8，花费300"));
 
-    m_cell.load(":/image/blymcell.png");
+    m_cell.load(":/image/towerrangeall.png");
     painter.drawPixmap(970,190,80,80,m_cell);
     painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,190,170,80),QString("攻击范围110，攻击频率400ms，减慢敌人速度"));
+    painter.drawText(QRect(1050,190,170,80),QString("可攻同时攻击范围内所有敌人"));
 
 
     painter.setBrush(QColor("#cd853f"));
@@ -185,6 +186,17 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             remember_tower_kind=0;
             break;
         }
+        else if(canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==2)
+        {
+            //m_playrGold-=TowerCost;
+            Tower *tower=new TowerRangeAll(it->centerPos(),this);
+            it->setHasTower(tower);
+            _towersList.push_back(tower);
+            mymoney-=tower->get_tower_cost();
+            update();
+            remember_tower_kind=0;
+            break;
+        }
 
         ++it;
 
@@ -193,7 +205,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     //                                                              点击侧栏，选择tower种类，记录数值编号
     if(point_in_rect(rec1,pressPoint))
     {
-        remember_tower_kind=1;   //数值改变已成功
+        remember_tower_kind=1;
+    }
+    else if(point_in_rect(rec2,pressPoint))
+    {
+        remember_tower_kind=2;
     }
 
 }
