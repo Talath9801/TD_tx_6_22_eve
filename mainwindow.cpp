@@ -132,7 +132,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     m_cell.load(":/image/towerrangeall.png");
     painter.drawPixmap(970,190,80,80,m_cell);
     painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,190,170,80),QString("可攻同时攻击范围内所有敌人"));
+    painter.drawText(QRect(1050,190,170,80),QString("对HIV及其变种有防御功能，攻击HIV的时候自己不会死"));
 
 
     painter.setBrush(QColor("#cd853f"));

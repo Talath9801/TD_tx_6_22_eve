@@ -36,7 +36,9 @@ public:
     void set_rate_of_attacking(int x){rate_of_attacking=x;}
     void set_tower_cost(int x){tower_cost=x;}
     int  get_tower_cost(){return tower_cost;}
+    void set_tower_type_num(int x){tower_type_num=x;}
     QPoint get_tower_pos(){return tower_position;}
+    int get_tower_type_num(){return tower_type_num;}
     //TowerPosition  *located_position;
 public slots:
     void removeTower();//拆塔
@@ -51,6 +53,7 @@ protected:
     int	 rate_of_attacking;
     int  life_span;
     int  tower_cost;
+    int  tower_type_num=0;
 
     Enemy *			the_enemy;
     MainWindow *	mainw;
