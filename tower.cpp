@@ -37,8 +37,14 @@ Tower::~Tower()
     delete tower_timer;
     tower_timer= NULL;
 
-    delete t_life_timer;
-    t_life_timer=NULL;
+    //delete t_life_timer;
+    //t_life_timer=NULL;
+
+    the_enemy=NULL;
+
+    mainw=NULL;
+
+
 }
 void Tower::removeTower()
 {

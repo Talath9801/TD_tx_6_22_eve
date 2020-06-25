@@ -58,7 +58,7 @@ protected:
     Enemy *			the_enemy;
     MainWindow *	mainw;
     QTimer *		tower_timer;
-    QTimer *        t_life_timer;
+    //QTimer *        t_life_timer;
     const QPoint	tower_position;
     const QPixmap	tower_picture;
     //std::string     tower_typename="tower";
