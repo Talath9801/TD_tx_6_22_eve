@@ -122,26 +122,40 @@ void MainWindow::paintEvent(QPaintEvent *)
 
 
     painter.setBrush(QColor("#deb887"));
+    painter.drawRect(rec0);
     painter.drawRect(rec1);//第一栏
     painter.drawRect(rec2);//第二栏
     painter.drawRect(rec3);
+
+
+    painter.setBrush(QColor("#22f5f5f5"));
+    painter.drawRect(rec4);
 
     //                                                         画细胞的图片和文字信息
     QPixmap m_cell(":/image/tlymcell.png");//
     painter.drawPixmap(970,100,80,80,m_cell);
     painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,100,170,80),QString("攻击范围110，攻击频率400ms，每次对敌人造成的伤害8，花费300"));
+    painter.drawText(QRect(1050,100,170,80),QString("相比默认塔，攻击范围缩小但攻击频率和强度增大"));
 
     m_cell.load(":/image/towerrangeall.png");
     painter.drawPixmap(970,190,80,80,m_cell);
     painter.setPen(Qt::black);
     painter.drawText(QRect(1050,190,170,80),QString("对HIV及其变种有防御功能，攻击HIV的时候自己不会死"));
 
+    m_cell.load(":/image/tower.png");
+    painter.drawPixmap(970,10,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1050,10,170,80),QString("默认类型塔，无需点击本栏，可以直接在地图的方框处点击建塔"));
+
     m_cell.load(":/image/phagocyte.png");
     painter.drawPixmap(970,280,80,80,m_cell);
     painter.setPen(Qt::black);
     painter.drawText(QRect(1050,280,170,80),QString("吞噬细胞,吞噬进入范围的病毒，吞噬2个之后自动死亡，攻击HIV时不被其杀死"));
 
+    m_cell.load(":/image/phagocyteplus.png");
+    painter.drawPixmap(970,370,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1050,370,170,80),QString("吞噬细胞升级版，无需点击此栏，直接在地图中吞噬细胞上点击即可升级"));
 
     painter.setBrush(QColor("#cd853f"));
     painter.setPen(Qt::NoPen);

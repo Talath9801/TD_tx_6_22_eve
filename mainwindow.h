@@ -66,6 +66,10 @@ private:
     QRect rec1=QRect(970,100,250,80);
     QRect rec2=QRect(970,190,250,80);
     QRect rec3=QRect(970,280,250,80);
+    QRect rec4=QRect(970,370,250,80);
+    QRect rec5=QRect(970,460,250,80);
+    QRect rec6=QRect(970,540,250,80);
+
 
 private:
 	Ui::MainWindow *		ui;
