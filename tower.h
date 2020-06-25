@@ -24,7 +24,7 @@ public:
 
 	void draw(QPainter *painter) const;
     void checkE();
-    void killcurrentE();
+    virtual void killcurrentE();
     void attackE();
     void findEnemytoAttack(Enemy *enemy);
     void getRidofB();

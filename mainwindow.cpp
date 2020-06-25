@@ -139,7 +139,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     m_cell.load(":/image/phagocyte.png");
     painter.drawPixmap(970,280,80,80,m_cell);
     painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,280,170,80),QString("吞噬细胞,攻击HIV时自己不会死"));
+    painter.drawText(QRect(1050,280,170,80),QString("吞噬细胞,吞噬进入范围的病毒，吞噬3个之后自动死亡，攻击HIV时不被其杀死"));
 
 
     painter.setBrush(QColor("#cd853f"));
