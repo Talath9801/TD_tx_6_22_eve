@@ -23,7 +23,7 @@ public:
     ~Tower();
 
     virtual void draw(QPainter *painter) const;
-    void checkE();
+    virtual void checkE();
     virtual void killcurrentE();
     void attackE();
     void findEnemytoAttack(Enemy *enemy);

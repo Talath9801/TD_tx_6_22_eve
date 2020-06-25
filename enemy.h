@@ -28,7 +28,8 @@ public:
 	QPoint pos() const;
     void setmaxHp(int x){m_maxHp=x;}
     void setcurrentHp(int x){m_currentHp=x;}
-    void setwalkingspeed(int x){m_walkingSpeed=x;}
+    void setwalkingspeed(qreal x){m_walkingSpeed=x;}
+    qreal getwalkingspeed(){return m_walkingSpeed;}
 
 public slots:
 	void doActivate();

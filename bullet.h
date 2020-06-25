@@ -24,10 +24,10 @@ public:
     void setposition(QPoint pos);
     QPoint cu_position() const;
 
-private slots:
-    void get_to_enemy();
+protected slots:
+    virtual void get_to_enemy();
 
-private:
+protected:
     const QPoint	originPosition;
     const QPoint	enemyPosition;
     const QPixmap	bullet_picture;

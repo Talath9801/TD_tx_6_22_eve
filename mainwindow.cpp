@@ -162,7 +162,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     m_cell.load(":/image/blymcell.png");
     painter.drawPixmap(970,460,80,80,m_cell);
     painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,460,170,80),QString("B淋巴细胞，分泌抗体，减慢病毒的速度"));
+    painter.drawText(QRect(1050,460,170,80),QString("B淋巴细胞，分泌抗体，可减慢病毒的速度,减慢到一定值不再减慢"));
 
     painter.setBrush(QColor("#cd853f"));
     painter.setPen(Qt::NoPen);
