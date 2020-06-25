@@ -11,6 +11,7 @@
 #include "audioplayer.h"
 #include "plistreader.h"
 #include "tlymcell.h"
+#include "towertunshi.h"
 #include "towerrangeall.h"
 #include <QPainter>
 #include <QMouseEvent>
@@ -122,6 +123,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.setBrush(QColor("#deb887"));
     painter.drawRect(rec1);//第一栏
     painter.drawRect(rec2);//第二栏
+    painter.drawRect(rec3);
 
     //                                                         画细胞的图片和文字信息
     QPixmap m_cell(":/image/tlymcell.png");//
@@ -133,6 +135,11 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.drawPixmap(970,190,80,80,m_cell);
     painter.setPen(Qt::black);
     painter.drawText(QRect(1050,190,170,80),QString("对HIV及其变种有防御功能，攻击HIV的时候自己不会死"));
+
+    m_cell.load(":/image/phagocyte.png");
+    painter.drawPixmap(970,280,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1050,280,170,80),QString("吞噬细胞,攻击HIV时自己不会死"));
 
 
     painter.setBrush(QColor("#cd853f"));
@@ -197,6 +204,17 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             remember_tower_kind=0;
             break;
         }
+        else if(canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==3)
+        {
+            //m_playrGold-=TowerCost;
+            Tower *tower=new TowerTunshi(it->centerPos(),this);
+            it->setHasTower(tower);
+            _towersList.push_back(tower);
+            mymoney-=tower->get_tower_cost();
+            update();
+            remember_tower_kind=0;
+            break;
+        }
 
         ++it;
 
@@ -210,6 +228,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     else if(point_in_rect(rec2,pressPoint))
     {
         remember_tower_kind=2;
+    }
+    else if(point_in_rect(rec3,pressPoint))
+    {
+        remember_tower_kind=3;
     }
 
 }
