@@ -12,6 +12,7 @@
 #include "plistreader.h"
 #include "tlymcell.h"
 #include "towertunshi.h"
+#include "tunshiplus.h"
 #include "towerrangeall.h"
 #include <QPainter>
 #include <QMouseEvent>
@@ -139,7 +140,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     m_cell.load(":/image/phagocyte.png");
     painter.drawPixmap(970,280,80,80,m_cell);
     painter.setPen(Qt::black);
-    painter.drawText(QRect(1050,280,170,80),QString("吞噬细胞,吞噬进入范围的病毒，吞噬3个之后自动死亡，攻击HIV时不被其杀死"));
+    painter.drawText(QRect(1050,280,170,80),QString("吞噬细胞,吞噬进入范围的病毒，吞噬2个之后自动死亡，攻击HIV时不被其杀死"));
 
 
     painter.setBrush(QColor("#cd853f"));
@@ -205,8 +206,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             break;
         }
         else if(canBuyTower() && it->containPoint(pressPoint) && !it->hasTower()&&event->button()==Qt::LeftButton&&remember_tower_kind==3)
+            //                         吞噬细胞
         {
-            //m_playrGold-=TowerCost;
             Tower *tower=new TowerTunshi(it->centerPos(),this);
             it->setHasTower(tower);
             _towersList.push_back(tower);
@@ -215,6 +216,23 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             remember_tower_kind=0;
             break;
         }
+        //吞噬细胞升级：先拆后建
+        else if(canBuyTower() && it->containPoint(pressPoint) && it->hasTower()&&event->button()==Qt::LeftButton&&it->the_tower_in->get_tower_type_num()==3)
+            //                         它是吞噬细胞
+        {
+            removedTower(it->the_tower_in);
+            it->the_tower_in=NULL;
+            it->setNotHasTower();
+            //m_playrGold-=TowerCost;
+            Tower *tower=new TunshiPlus(it->centerPos(),this);
+            it->setHasTower(tower);
+            _towersList.push_back(tower);
+            mymoney-=tower->get_tower_cost();
+            update();
+            remember_tower_kind=0;
+            break;
+        }
+
 
         ++it;
 

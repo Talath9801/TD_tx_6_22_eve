@@ -13,7 +13,7 @@
 
 static const int Health_Bar_Width = 20;
 
-const QSize Enemy::ms_fixedSize(80,80);
+const QSize Enemy::ms_fixedSize(50,50);
 
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
@@ -76,7 +76,7 @@ void Enemy::draw(QPainter *painter) const
 	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
     painter->translate(m_pos);
 
-    painter->drawPixmap(offsetPoint.x(),offsetPoint.y(),80,80, m_sprite);//enemy
+    painter->drawPixmap(offsetPoint.x(),offsetPoint.y(),50,50, m_sprite);//enemy
     painter->setBrush(QColor("#99ffffff"));
     painter->setPen(Qt::NoPen);
     painter->drawRect(offsetPoint.x(),offsetPoint.y(),60,20);//text background

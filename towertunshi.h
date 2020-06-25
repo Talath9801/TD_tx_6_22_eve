@@ -13,7 +13,7 @@ public:
 public slots:
     void shot();
 protected:
-    int can_eat=3;
+    int can_eat=2;
 };
 
 #endif // TOWERTUNSHI_H

@@ -21,5 +21,6 @@
         <file>image/hivplus.png</file>
         <file>image/towerrangeall.png</file>
         <file>image/bulleteat.png</file>
+        <file>image/phagocyteplus.png</file>
     </qresource>
 </RCC>
