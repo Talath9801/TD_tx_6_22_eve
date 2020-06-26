@@ -111,9 +111,9 @@ void MainWindow::paintEvent(QPaintEvent *)
     foreach (const Bullet *bullet, _bulletList)
         bullet->draw(&cachePainter);
 
-    drawWave(&cachePainter);
-    drawHP(&cachePainter);
-    drawPlayerGold(&cachePainter);
+    draw_Enemy_Wave(&cachePainter);
+    draw_player_HP(&cachePainter);
+    draw_Player_money(&cachePainter);
 
     QPainter painter(this);
     painter.drawPixmap(0, 0, cachePix);
@@ -327,22 +327,22 @@ bool MainWindow::canBuyTower() const
     return false;
 }
 
-void MainWindow::drawWave(QPainter *painter)
+void MainWindow::draw_Enemy_Wave(QPainter *painter)
 {
-    painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(400, 5, 100, 25), QString("WAVE : %1").arg(_waves + 1));
+    painter->setPen(QPen(QColor("#a0522d")));
+    painter->drawText(QRect(570, 5, 200, 40), QString("敌人波数 : %1/20").arg(_waves + 1));
 }
 
-void MainWindow::drawHP(QPainter *painter)
+void MainWindow::draw_player_HP(QPainter *painter)
 {
-    painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(30, 5, 100, 25), QString("HP : %1").arg(myHp));
+    painter->setPen(QPen(QColor("#a0522d")));
+    painter->drawText(QRect(230, 5, 200,40), QString("玩家血量 : %1").arg(myHp));
 }
 
-void MainWindow::drawPlayerGold(QPainter *painter)
+void MainWindow::draw_Player_money(QPainter *painter)
 {
-    painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(200, 5, 200, 25), QString("GOLD : %1").arg(mymoney));
+    painter->setPen(QPen(QColor("#a0522d")));
+    painter->drawText(QRect(390, 5, 200, 40), QString("玩家经济 : %1").arg(mymoney));
 }
 
 void MainWindow::doGameOver()
@@ -425,7 +425,7 @@ void MainWindow::removedEnemy(Enemy *enemy)
     if (_enemyList.empty())
     {
         ++_waves;
-        if (!loadWave())
+        if (!load_Enemy_Wave())
         {
             _gameWin = true;
             // 游戏胜利转到游戏胜利场景
@@ -482,7 +482,7 @@ void MainWindow::preLoadWavesInfo()
     file.close();
 }
 
-bool MainWindow::loadWave()
+bool MainWindow::load_Enemy_Wave()
 {
     if (_waves >= _wavesInfo.size())
         return false;
@@ -556,5 +556,5 @@ QList<Enemy *> MainWindow::enemyList() const
 
 void MainWindow::gameStart()
 {
-    loadWave();
+    load_Enemy_Wave();
 }

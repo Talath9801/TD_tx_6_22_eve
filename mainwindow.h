@@ -6,8 +6,6 @@
 #include "towerposition.h"
 #include "tower.h"
 
-//#include <string>
-
 
 namespace Ui {
 class MainWindow;
@@ -39,7 +37,6 @@ public:
 
 	AudioPlayer* audioPlayer() const;
 	QList<Enemy *> enemyList() const;
-    //std::string sdfa="sf";
     int remember_tower_kind=0;
     bool point_in_rect(QRect &,QPoint &);
     QList<TowerPosition>	_towerPositionsList;
@@ -55,11 +52,11 @@ private slots:
 private:
 	void loadTowerPositions();
 	void addWayPoints();
-	bool loadWave();
+    bool load_Enemy_Wave();
 	bool canBuyTower() const;
-	void drawWave(QPainter *painter);
-	void drawHP(QPainter *painter);
-	void drawPlayerGold(QPainter *painter);
+    void draw_Enemy_Wave(QPainter *painter);
+    void draw_player_HP(QPainter *painter);
+    void draw_Player_money(QPainter *painter);
 	void doGameOver();
 	void preLoadWavesInfo();
     QRect rec0=QRect(970,10,250,80);
@@ -80,7 +77,6 @@ private:
     bool					_gameWin;
     AudioPlayer *			_audioPlayer;
     QList<QVariant>			_wavesInfo;
-    //QList<TowerPosition>	_towerPositionsList;
     QList<Tower *>			_towersList;
     QList<WayPoint *>		_wayPointsList;
     QList<Enemy *>			_enemyList;
