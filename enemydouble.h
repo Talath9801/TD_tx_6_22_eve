@@ -8,6 +8,7 @@ public:
     EnemyDouble(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/enemydouble.png"));
     void doDoubleBlood();
     QTimer * timer_enemydouble;
+    ~EnemyDouble();
 
 public slots:
     void dospecial();

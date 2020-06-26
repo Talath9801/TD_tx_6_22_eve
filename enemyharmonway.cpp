@@ -20,6 +20,9 @@ void EnemyHarmOnWay::dospecial()
 
 EnemyHarmOnWay::~EnemyHarmOnWay()
 {
+    m_attackedTowersList.clear();
+    m_destinationWayPoint = NULL;
+    mainw = NULL;
 }
 
 void EnemyHarmOnWay::doHarmOnWay()

@@ -16,3 +16,12 @@ void EnemyDouble::dospecial()
 {
     doDoubleBlood();
 }
+EnemyDouble::~EnemyDouble()
+{
+    m_attackedTowersList.clear();
+    m_destinationWayPoint = NULL;
+    mainw = NULL;
+    if(timer_enemydouble)
+        delete timer_enemydouble;
+    timer_enemydouble=NULL;
+}

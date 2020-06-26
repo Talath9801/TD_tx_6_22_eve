@@ -6,6 +6,7 @@ class HIVplus:public HIV
 {
 public:
     HIVplus(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite = QPixmap(":/image/hivplus.png"));
+    ~HIVplus();
 };
 
 #endif // HIVPLUS_H

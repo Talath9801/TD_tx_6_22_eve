@@ -44,6 +44,10 @@ void Enemy::move()
 {
 	if (!m_active)
 		return;
+    if(this->m_currentHp<=0)
+    {
+       // mainw->removedEnemy(this);
+    }
 
 	if (collisionWithCircle(m_pos, 1, m_destinationWayPoint->pos(), 1))
 	{

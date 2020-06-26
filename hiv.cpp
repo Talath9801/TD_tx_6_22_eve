@@ -28,3 +28,10 @@ void HIV::getAttacked(Tower *attacker)
         m_attackedTowersList.push_back(attacker);
     }
 }
+
+HIV::~HIV()
+{
+    m_attackedTowersList.clear();
+    m_destinationWayPoint = NULL;
+    mainw = NULL;
+}

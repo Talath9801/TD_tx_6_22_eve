@@ -26,5 +26,6 @@
         <file>image/blymcellplus.png</file>
         <file>image/gamewin.jpg</file>
         <file>image/gamefail.jpg</file>
+        <file>music/8bitDungeonLevel.mp3</file>
     </qresource>
 </RCC>

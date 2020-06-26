@@ -5,3 +5,9 @@ HIVplus::HIVplus(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprit
 {
      set_num_can_kill(3);
 }
+HIVplus::~HIVplus()
+{
+    m_attackedTowersList.clear();
+    m_destinationWayPoint = NULL;
+    mainw = NULL;
+}

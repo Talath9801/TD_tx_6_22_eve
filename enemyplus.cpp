@@ -7,3 +7,9 @@ EnemyPlus::EnemyPlus(WayPoint *startWayPoint, MainWindow *game, const QPixmap &s
      setcurrentHp(60);
      setwalkingspeed(4);
 }
+EnemyPlus::~EnemyPlus()
+{
+    m_attackedTowersList.clear();
+    m_destinationWayPoint = NULL;
+    mainw = NULL;
+}

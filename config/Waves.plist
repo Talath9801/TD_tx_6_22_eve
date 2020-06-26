@@ -17,7 +17,7 @@
 			<key>spawnTime</key>
                         <integer>3000</integer>
                         <key>enemyType</key>
-                        <integer>3</integer>
+                        <integer>0</integer>
 		</dict>
 		<dict>
 			<key>data</key>
@@ -25,7 +25,7 @@
 			<key>spawnTime</key>
                         <integer>6000</integer>
                         <key>enemyType</key>
-                        <integer>0</integer>
+                        <integer>1</integer>
 		</dict>
 		<dict>
 			<key>data</key>
@@ -49,7 +49,7 @@
 			<key>spawnTime</key>
                         <integer>15000</integer>
                         <key>enemyType</key>
-                        <integer>4</integer>
+                        <integer>1</integer>
 		</dict>
 	</array>
 	<array>
@@ -59,13 +59,71 @@
 			<key>spawnTime</key>
 			<integer>1000</integer>
                         <key>enemyType</key>
-                        <integer>2</integer>
+                        <integer>0</integer>
 		</dict>
 		<dict>
 			<key>data</key>
 			<string></string>
 			<key>spawnTime</key>
 			<integer>2000</integer>
+                        <key>enemyType</key>
+                        <integer>3</integer>
+		</dict>
+		<dict>
+			<key>data</key>
+			<string></string>
+			<key>spawnTime</key>
+			<integer>3000</integer>
+                        <key>enemyType</key>
+                        <integer>3</integer>
+		</dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>3500</integer>
+                        <key>enemyType</key>
+                        <integer>1</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>4000</integer>
+                        <key>enemyType</key>
+                        <integer>0</integer>
+                </dict>
+	</array>
+	<array>
+		<dict>
+			<key>data</key>
+			<string></string>
+			<key>spawnTime</key>
+                        <integer>300</integer>
+                        <key>enemyType</key>
+                        <integer>1</integer>
+		</dict>
+		<dict>
+			<key>data</key>
+			<string></string>
+			<key>spawnTime</key>
+                        <integer>3000</integer>
+                        <key>enemyType</key>
+                        <integer>3</integer>
+		</dict>
+		<dict>
+			<key>data</key>
+			<string></string>
+			<key>spawnTime</key>
+                        <integer>5000</integer>
+                        <key>enemyType</key>
+                        <integer>3</integer>
+		</dict>
+		<dict>
+			<key>data</key>
+			<string></string>
+			<key>spawnTime</key>
+                        <integer>7000</integer>
                         <key>enemyType</key>
                         <integer>5</integer>
 		</dict>
@@ -73,49 +131,7 @@
 			<key>data</key>
 			<string></string>
 			<key>spawnTime</key>
-			<integer>3000</integer>
-                        <key>enemyType</key>
-                        <integer>0</integer>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>data</key>
-			<string></string>
-			<key>spawnTime</key>
-			<integer>1000</integer>
-                        <key>enemyType</key>
-                        <integer>0</integer>
-		</dict>
-		<dict>
-			<key>data</key>
-			<string></string>
-			<key>spawnTime</key>
-			<integer>2000</integer>
-                        <key>enemyType</key>
-                        <integer>0</integer>
-		</dict>
-		<dict>
-			<key>data</key>
-			<string></string>
-			<key>spawnTime</key>
-			<integer>3000</integer>
-                        <key>enemyType</key>
-                        <integer>0</integer>
-		</dict>
-		<dict>
-			<key>data</key>
-			<string></string>
-			<key>spawnTime</key>
-			<integer>4000</integer>
-                        <key>enemyType</key>
-                        <integer>0</integer>
-		</dict>
-		<dict>
-			<key>data</key>
-			<string></string>
-			<key>spawnTime</key>
-			<integer>5000</integer>
+                        <integer>9000</integer>
                         <key>enemyType</key>
                         <integer>0</integer>
 		</dict>
@@ -125,7 +141,15 @@
                         <key>data</key>
                         <string></string>
                         <key>spawnTime</key>
-                        <integer>100</integer>
+                        <integer>300</integer>
+                        <key>enemyType</key>
+                        <integer>2</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>2000</integer>
                         <key>enemyType</key>
                         <integer>0</integer>
                 </dict>
@@ -133,7 +157,7 @@
                         <key>data</key>
                         <string></string>
                         <key>spawnTime</key>
-                        <integer>3000</integer>
+                        <integer>4000</integer>
                         <key>enemyType</key>
                         <integer>1</integer>
                 </dict>
@@ -141,34 +165,649 @@
                         <key>data</key>
                         <string></string>
                         <key>spawnTime</key>
-                        <integer>6000</integer>
+                        <integer>7000</integer>
                         <key>enemyType</key>
-                        <integer>0</integer>
+                        <integer>1</integer>
                 </dict>
                 <dict>
                         <key>data</key>
                         <string></string>
                         <key>spawnTime</key>
-                        <integer>9000</integer>
-                        <key>enemyType</key>
-                        <integer>0</integer>
-                </dict>
-                <dict>
-                        <key>data</key>
-                        <string></string>
-                        <key>spawnTime</key>
-                        <integer>12000</integer>
-                        <key>enemyType</key>
-                        <integer>0</integer>
-                </dict>
-                <dict>
-                        <key>data</key>
-                        <string></string>
-                        <key>spawnTime</key>
-                        <integer>15000</integer>
+                        <integer>8500</integer>
                         <key>enemyType</key>
                         <integer>0</integer>
                 </dict>
         </array>
+
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>300</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1900</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3800</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6600</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>8000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>300</integer>
+                <key>enemyType</key>
+                <integer>2</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1800</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3500</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6300</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>7800</integer>
+                <key>enemyType</key>
+                <integer>4</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1500</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3300</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>5000</integer>
+                <key>enemyType</key>
+                <integer>5</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>7000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>2</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4300</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6800</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1500</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3300</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>5000</integer>
+                <key>enemyType</key>
+                <integer>5</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+</array>
+
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>4</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3300</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>5300</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>2</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1500</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3300</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>5000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>7000</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3300</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4000</integer>
+                <key>enemyType</key>
+                <integer>5</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>5000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>2</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1500</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2500</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+                <key>enemyType</key>
+                <integer>4</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3300</integer>
+                <key>enemyType</key>
+                <integer>5</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4500</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>100</integer>
+                <key>enemyType</key>
+                <integer>2</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1200</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2300</integer>
+                <key>enemyType</key>
+                <integer>5</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>4</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>800</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1500</integer>
+                <key>enemyType</key>
+                <integer>4</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2500</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>2</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>500</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1500</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+                <key>enemyType</key>
+                <integer>4</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2500</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4000</integer>
+                <key>enemyType</key>
+                <integer>3</integer>
+        </dict>
+</array>
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>100</integer>
+                <key>enemyType</key>
+                <integer>2</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>500</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+                <key>enemyType</key>
+                <integer>0</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2600</integer>
+                <key>enemyType</key>
+                <integer>5</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+                <key>enemyType</key>
+                <integer>1</integer>
+        </dict>
 </array>
 </plist>
