@@ -118,7 +118,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     QPainter painter(this);
     painter.drawPixmap(0, 0, cachePix);
     //  画出棕色背景底图
-    painter.setBrush(QColor("#cd853f"));
+    /*painter.setBrush(QColor("#cd853f"));
     painter.setPen(Qt::NoPen);
     painter.drawRect(955,0,277,640);
 
@@ -181,6 +181,36 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.drawRect(620,645,200,140);
     painter.drawRect(825,645,200,140);
     painter.drawRect(1030,645,200,140);
+
+    m_cell.load(":/image/enemy.png");
+    painter.drawPixmap(10,650,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(95,650,100,130),QString("普通病毒"));
+
+    m_cell.load(":/image/enemyplus.png");
+    painter.drawPixmap(215,650,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(300,650,100,130),QString("普通病毒升级版，跑得更快，血更厚"));
+
+    m_cell.load(":/image/enemyharmonway.png");
+    painter.drawPixmap(420,650,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(505,650,100,130),QString("未被杀死时，每秒钟减少玩家经济20点，易导致玩家经济死亡"));
+
+    m_cell.load(":/image/enemydouble.png");
+    painter.drawPixmap(625,650,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(710,650,100,130),QString("只要未被杀死，每10秒钟病毒血量翻倍"));
+
+    m_cell.load(":/image/hiv.png");
+    painter.drawPixmap(830,650,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(915,650,100,130),QString("HIV病毒，可以杀死对其发动攻击的第一个细胞，特殊细胞除外"));
+
+    m_cell.load(":/image/hivplus.png");
+    painter.drawPixmap(1035,650,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1120,650,100,130),QString("HIV病毒升级版，可以杀死对其发动攻击的前三个细胞，特殊细胞除外"));*/
 
 
 }
