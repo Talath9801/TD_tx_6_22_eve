@@ -14,6 +14,7 @@
 #include "towertunshi.h"
 #include "tunshiplus.h"
 #include "blymcell.h"
+#include "blymcellplus.h"
 #include "towerrangeall.h"
 #include <QPainter>
 #include <QMouseEvent>
@@ -132,6 +133,7 @@ void MainWindow::paintEvent(QPaintEvent *)
 
     painter.setBrush(QColor("#22f5f5f5"));
     painter.drawRect(rec4);
+    painter.drawRect(rec6);
 
     //                                                         画细胞的图片和文字信息
     QPixmap m_cell(":/image/tlymcell.png");//
@@ -163,6 +165,11 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.drawPixmap(970,460,80,80,m_cell);
     painter.setPen(Qt::black);
     painter.drawText(QRect(1050,460,170,80),QString("B淋巴细胞，分泌抗体，可减慢病毒的速度,减慢到一定值不再减慢"));
+
+    m_cell.load(":/image/blymcellplus.png");
+    painter.drawPixmap(970,550,80,80,m_cell);
+    painter.setPen(Qt::black);
+    painter.drawText(QRect(1050,550,170,80),QString("B淋巴细胞升级，不能直接点击此栏建塔，在已有B淋巴细胞上点击即可升级"));
 
     painter.setBrush(QColor("#cd853f"));
     painter.setPen(Qt::NoPen);
@@ -258,6 +265,22 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         {
             //m_playrGold-=TowerCost;
             Tower *tower=new BLymCell(it->centerPos(),this);
+            it->setHasTower(tower);
+            _towersList.push_back(tower);
+            mymoney-=tower->get_tower_cost();
+            update();
+            remember_tower_kind=0;
+            break;
+        }
+
+        else if(canBuyTower() && it->containPoint(pressPoint) && it->hasTower()&&event->button()==Qt::LeftButton&&it->the_tower_in->get_tower_type_num()==5)
+            //                         它是B细胞
+        {
+            removedTower(it->the_tower_in);
+            it->the_tower_in=NULL;
+            it->setNotHasTower();
+            //m_playrGold-=TowerCost;
+            Tower *tower=new BLymCellPlus(it->centerPos(),this);
             it->setHasTower(tower);
             _towersList.push_back(tower);
             mymoney-=tower->get_tower_cost();

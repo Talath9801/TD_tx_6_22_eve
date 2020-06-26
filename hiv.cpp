@@ -7,7 +7,7 @@ HIV::HIV(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite)
 }
 void HIV::getAttacked(Tower *attacker)
 {
-    if(num_can_kill>=1&&attacker->get_tower_type_num()!=2&&attacker->get_tower_type_num()!=3)//2,3类塔拆不掉
+    if(num_can_kill>=1&&attacker->get_tower_type_num()!=2&&attacker->get_tower_type_num()!=3&&attacker->get_tower_type_num()!=4)//2,3类塔拆不掉
     {
         auto it = mainw->_towerPositionsList.begin();
         while (it != mainw->_towerPositionsList.end())
