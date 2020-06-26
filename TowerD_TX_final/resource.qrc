@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Bg.png</file>
+        <file>image/bullet.png</file>
+        <file>image/Default.png</file>
+        <file>image/enemy.png</file>
+        <file>image/icon_gold.png</file>
+        <file>image/icon_HP.png</file>
+        <file>image/open_spot.png</file>
+        <file>image/tower.png</file>
+        <file>config/Info.plist</file>
+        <file>config/TowersPosition.plist</file>
+        <file>config/Waves.plist</file>
+        <file>image/enemyplus.png</file>
+        <file>image/hiv.png</file>
+        <file>image/tlymcell.png</file>
+        <file>image/phagocyte.png</file>
+        <file>image/blymcell.png</file>
+        <file>image/enemyharmonway.png</file>
+        <file>image/enemydouble.png</file>
+        <file>image/hivplus.png</file>
+        <file>image/towerrangeall.png</file>
+        <file>image/bulleteat.png</file>
+        <file>image/phagocyteplus.png</file>
+        <file>image/bulletslow.png</file>
+        <file>image/blymcellplus.png</file>
+        <file>image/gamewin.jpg</file>
+        <file>image/gamefail.jpg</file>
+    </qresource>
+</RCC>
