@@ -89,10 +89,20 @@ void MainWindow::paintEvent(QPaintEvent *)
 {
     if (_gameEnded || _gameWin)
     {
-        QString text = _gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
+        //QString text = _gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
         QPainter painter(this);
-        painter.setPen(QPen(Qt::red));
-        painter.drawText(rect(), Qt::AlignCenter, text);
+        //painter.setPen(QPen(Qt::red));
+        //painter.drawText(rect(), Qt::AlignCenter, text);
+        if(_gameWin)
+        {
+            QPixmap endingPic(":/image/gamewin.jpg");
+            painter.drawPixmap(0,0,1232,791,endingPic);
+        }
+        else if(_gameEnded)
+        {
+            QPixmap losingPic(":/image/gamefail.jpg");
+            painter.drawPixmap(0,0,1232,791,losingPic);
+        }
         return;
     }
 

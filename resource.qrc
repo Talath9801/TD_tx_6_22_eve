@@ -24,5 +24,7 @@
         <file>image/phagocyteplus.png</file>
         <file>image/bulletslow.png</file>
         <file>image/blymcellplus.png</file>
+        <file>image/gamewin.jpg</file>
+        <file>image/gamefail.jpg</file>
     </qresource>
 </RCC>
